@@ -1,0 +1,19 @@
+{% extends 'mainsite/base.html' %}
+{% load staticfiles %}
+{% load class_tag %}
+
+{% block body_block %}
+<h2> model chain testing </h2>
+
+{% for item in content_list %}
+    {% if item|get_class == 'Recipe' %}
+        <h3>{{ item.name_bm }}</h3>
+    {% elif item|get_class == 'Article' %}
+        <h3>{{ item.title_bm }}</h3>
+    {% elif item|get_class == 'Restaurant' %}
+        <h3>{{ item.name_bm }}</h3>
+    {% endif %}
+{% endfor %}
+
+
+{% endblock %}

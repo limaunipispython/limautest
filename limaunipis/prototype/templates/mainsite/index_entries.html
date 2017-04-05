@@ -1,0 +1,64 @@
+{% load class_tag %}
+
+{% load el_pagination_tags %}
+{% paginate content_list %}
+
+{% for item in content_list %}
+    {% if item|get_class == 'Recipe' %}
+    <div class="row contentgroup">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="youtube">
+                <iframe width="854" height="480" src="{{ item.youtube_url }}" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="content_text">
+                <h4>{{ item.name_bm }}</h4>
+                <content>{{ item.description }}</content></br>
+                <button type="button" class="btn btn-success">Read More</button>
+            </div>
+        </div>
+    </div><hr class="style17">
+    {% elif item|get_class == 'Article' %}
+    <div class="row contentgroup">
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="article_picture">
+                <img src="{{ item.thumbnail.url }}" style="width:100%">
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="content_text">
+                <h4>{{ item.title_bm }}</h4>
+                <content class="hidden-xs">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</content>
+            </div>
+        </div>
+    </div><hr class="style17">
+    {% elif item|get_class == 'Restaurant' %}
+    <div class="row contentgroup">
+        <div class="col-md-12 col-sm-12 col-xs-12 restaurant_title">
+            <h4> Limau Review : {{ item.name_bm }} </h4>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-6">
+            <div class="restaurant_pic">
+                <img src="{{ item.building_thumbnail.url }}" style="width:100%">
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-6">
+            <div class="restaurant_pic">
+                <img src="{{ item.food_thumbnail_1.url }}" style="width:100%">
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-12">
+            <span class="limau_meter">Limau <i class="fa fa-tachometer" aria-hidden="true"></i> : </span>
+            <span class="stars">{{ item.starhtml | safe }}</span>
+            <div class="restaurant_text">
+                <content>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</content></br>
+                <location class="address"> ADDRESS: {{ item.address }}</location>
+            </div>
+        </div>
+    </div><hr class="style17">
+
+    {% endif %}
+{% endfor %}
+
+{% show_more %}

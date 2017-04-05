@@ -1,0 +1,78 @@
+{% extends 'mainsite/base.html' %}
+{% load staticfiles %}
+
+{% block body_block %}
+<!--need to iterate this group of class with django template language-->
+<div class="row contentgroup">
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="youtube">
+            <iframe width="854" height="480" src="https://www.youtube.com/embed/mzInl-ZlX6c" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="content_text">
+            <h4>Ayam Masak Kung Pao</h4>
+            <content>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</content></br>
+            <button type="button" class="btn btn-success">Read More</button>
+        </div>
+    </div>
+</div><hr class="style17">
+<!--end of iteration-->
+<div class="row contentgroup">
+    <div class="col-md-6 col-sm-6 col-xs-6">
+        <div class="article_picture">
+            <img src="http://localhost:8000/media/babyfood.jpg" style="width:100%">
+        </div>
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-6">
+        <div class="content_text">
+            <h4>Top 10 makanan bayi yang menyihatkan</h4>
+            <content class="hidden-xs">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</content>
+        </div>
+    </div>
+</div><hr class="style17">
+<!--end of iteration-->
+
+<div class="row contentgroup">
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="youtube">
+            <iframe width="854" height="480" src="https://www.youtube.com/embed/mzInl-ZlX6c" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="content_text">
+            <h4>Ayam Masak Kung Pao</h4>
+            <content>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</content></br>
+            <button type="button" class="btn btn-success">Read More</button>
+        </div>
+    </div>
+</div><hr class="style17">
+<!--end of iteration-->
+<div class="row contentgroup">
+    <div class="col-md-12 col-sm-12 col-xs-12 restaurant_title">
+        <h4> Limau Review : Restoran Fiske </h4>
+    </div>
+    <div class="col-md-4 col-sm-4 col-xs-6">
+        <div class="restaurant_pic">
+            <img src="http://localhost:8000/media/restaurant.jpg" style="width:100%">
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-4 col-xs-6">
+        <div class="restaurant_pic">
+            <img src="http://localhost:8000/media/food.jpg" style="width:100%">
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-4 col-xs-12">
+        <span>STARS</span>
+        <div class="restaurant_text">
+            <content>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</content></br>
+            <location> LOCATION ADDRESS </location>
+        </div>
+    </div>
+</div><hr class="style17">
+<!--end of iteration-->
+                
+    
+    
+     
+{% endblock %}

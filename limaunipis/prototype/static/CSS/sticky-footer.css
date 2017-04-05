@@ -1,0 +1,82 @@
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 50px;
+}
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 50px;
+  background-color: #f5f5f5;
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+body > .container {
+  padding: 60px 15px 0;
+}
+.container .text-muted {
+  margin: 20px 0;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+code {
+  font-size: 80%;
+}
+
+/*muzakkir code*/
+
+#recipe-footer-button {
+	border-right: solid grey;
+	border-bottom: solid grey;
+	border-width: 1px;
+	height: 100px
+}
+
+#articles-footer-button {
+	border-right: solid grey;
+	border-width: 1px;
+	height: 100px
+}
+
+#restaurants-footer-button {
+	height: 100px;
+}
+
+.item i {
+	font-size: xx-large;
+	padding-top: 10px;
+	display:block;
+    text-align:center;
+}
+
+.item a {
+	color: grey;
+    text-decoration: none;
+}
+
+.item2 {
+    background-color: grey;
+}
+
+.item2 i {
+	color: white;
+}
+
+
+
+

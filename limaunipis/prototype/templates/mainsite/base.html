@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+<html lang="en">
+  	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="icon" href="../../favicon.ico">
+
+		<title>Limau Nipis</title>
+
+		<!-- Bootstrap core CSS -->
+		<link href="{% static 'bootstrap-3.3.7-dist/css/bootstrap.min.css' %}" rel="stylesheet">
+
+		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+		<link href="{% static 'bootstrap-3.3.7-dist/css/assets-css/ie10-viewport-bug-workaround.css' %}" rel="stylesheet">
+
+		<!-- Custom styles for this template -->
+		<link href="{% static 'css/navbar-fixed-top.css' %}" rel="stylesheet">
+		<link href="{% static 'css/sticky-footer.css' %}" rel="stylesheet">
+		<link rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}">
+		<link href="{% static 'css/content.css' %}" rel="stylesheet">
+
+		<!--Google font-->
+		<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+
+
+
+  	</head>
+
+  	<body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Limau Nipis</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li class="dropdown hidden-sm hidden-md hidden-lg">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Recipes</a></li>
+                <li><a href="#">Articles</a></li>
+                <li><a href="#">Restaurants</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        	<li class="active"><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+	<!-- Desktop Size Navigation-->
+	<div class="row hidden-xs">
+		<div class="container">
+	  
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<ul class="nav nav-tabs nav-justified">
+				<li class="{% if nbar == 'home' %}active{% endif %}"><a href="#">Home</a></li>
+				<li class="{% if nbar == 'recipes' %}active{% endif %}"><a href="#">Recipes</a></li>
+				<li class="{% if nbar == 'articles' %}active{% endif %}"><a href="#">Articles</a></li>
+				<li class="{% if nbar == 'Restaurants' %}active{% endif %}"><a href="#">Restaurants</a></li>
+			</ul>
+			</div>				    	      
+	    
+		</div> 
+	</div>
+
+	<!--content-->
+	<div class="container">
+		<!--<div class="col-md-12 col-sm-12 col-xs-12">	-->
+			<div id="bodycontent">
+				<div class="row">
+    			<div class="col-md-9 col-sm-9 col-xs-12">
+						{% block body_block %}
+						{% endblock %}
+    			</div>
+					<div class="col-md-3 hidden-sm hidden-xs">
+        		<!--<div class="row outer_sidebox">
+							<h5> ANNOUNCEMENT </h5>
+							<div class="inner_sidebox">
+									<p> Limau Nipis website will be live in May 2017!! </p>
+							</div>
+            </div>
+						<div class=" row outer_sidebox" id="user_recipe">
+							<h5> USER POSTED RECIPES </h5>
+							<div class="inner_sidebox">
+									<div class="col-md-12 test">
+											fuck off
+									</div>
+							</div>
+            </div>      -->
+						<div class="row">
+							<div class="panel panel-info">
+								<div class="panel-heading">ANNOUNCEMENT</div>
+								<div class="panel-body">Limau Nipis will be online in May 2017!!</div>
+							</div>
+						</div>
+						<div class="row">
+							  <div class="panel panel-primary">
+      						<div class="panel-heading">USER POSTED RECIPE</div>
+      						<div class="panel-body">
+										<div class="clearfix">
+											<div class="col-md-4">
+												<img src="http://localhost:8000/media/user_picture.png" class="user_pic" style="width:100%">
+											</div>
+											<div class="col-md-8">
+												<a href="#"><name> MISS COOKIE <name></a>
+												<p>Ayam Masak Merah</p>
+											</div>
+										</div>
+									</div>
+									<div class="panel-body">
+										<div class="clearfix">
+											<div class="col-md-4">
+												<img src="http://localhost:8000/media/user_picture.png" class="user_pic" style="width:100%">
+											</div>
+											<div class="col-md-8">
+												<a href="#"><name> MISS CHOCOLATE <name></a>
+												<p>Gulai Ayam Cendawan</p>
+											</div>
+										</div>
+									</div>
+									
+   						 </div>
+						</div>
+
+
+    			</div>
+				</div>
+			</div>
+		<!--</div>-->
+	</div>
+	<!--endcontent-->
+
+	<!--Footer only visible during mobile view-->
+		
+	<footer class="footer hidden-lg hidden-md hidden-sm">
+    <div class="container">
+			<div class=col-xs-12>
+				<div class="col-xs-4 item" id="recipe-footer-button">
+					<a href="http://www.google.com"><i class="fa fa-cutlery" aria-hidden="true"></i></a>
+				</div>
+				<div class="col-xs-4 item" id="articles-footer-button">
+					<a href="#"><i class="fa fa-newspaper-o" aria-hidden="true"></i></a>
+				</div>
+				<div class="col-xs-4 item" id="restaurants-footer-button">
+					<a href="#"><i class="fa fa-home" aria-hidden="true"></i></a>
+				</div>					
+			</div>
+		</div>	
+	</footer>
+  
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{% static 'bootstrap-3.3.7-dist/js/jquery-3.1.1.min.js' %}"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="{% static 'bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>
+   
+	<!-- General my own javascript-->
+	<script src="{% static 'js/myjavascript.js' %}"></script>
+
+		
+  	</body>
+</html>

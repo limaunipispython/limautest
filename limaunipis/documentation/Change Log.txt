@@ -1,0 +1,7 @@
+Date -- 23/3/2017
+    - testpage_index updated to latest design with proper youtube iframe ratio
+    - testpage_index updated to latest design with proper image aspect ratio
+
+Date -- 29/3/2017 
+    - rough template for testpage_index completed 
+    
