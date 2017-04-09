@@ -1,0 +1,32 @@
+{% load el_pagination_tags %}
+{% paginate restaurants %}
+
+{% for item in restaurants %}
+
+    <div class="row contentgroup">
+        <div class="col-md-12 col-sm-12 col-xs-12 restaurant_title">
+            <h4> Limau Review : {{ item.name_bm }} </h4>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-6">
+            <div class="restaurant_pic">
+                <img src="{{ item.building_thumbnail.url }}" style="width:100%">
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-6">
+            <div class="restaurant_pic">
+                <img src="{{ item.food_thumbnail_1.url }}" style="width:100%">
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-12">
+            <span class="limau_meter">Limau <i class="fa fa-tachometer" aria-hidden="true"></i> : </span>
+            <span class="stars">{{ item.starhtml | safe }}</span>
+            <div class="restaurant_text">
+                <content>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</content></br>
+                <location class="address"> ADDRESS: {{ item.address }}</location>
+            </div>
+        </div>
+    </div><hr class="style17">
+
+{% endfor %}
+
+{% show_more %}

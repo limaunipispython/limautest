@@ -24,6 +24,8 @@ app_name = 'limau'
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^recipe_all/$', views.recipe_all, name="recipe_all"),
+    url(r'^article_all/$', views.article_all, name="article_all"),
+    url(r'^restaurant_all/$', views.restaurant_all, name="restaurant_all"),
     url(r'^testpage_index/$', views.testpage_index, name="testpage_index"),
     url(r'^testpage_model/$', views.testpage_model, name="testpage_model"),
 ]

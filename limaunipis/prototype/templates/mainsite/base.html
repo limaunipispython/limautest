@@ -76,8 +76,8 @@
 				<ul class="nav nav-tabs nav-justified">
 				<li class="{% if nbar == 'home' %}active{% endif %}"><a href="{% url 'limau:index' %}">Home</a></li>
 				<li class="{% if nbar == 'recipes' %}active{% endif %}"><a href="{% url 'limau:recipe_all' %}">Recipes</a></li>
-				<li class="{% if nbar == 'articles' %}active{% endif %}"><a href="#">Articles</a></li>
-				<li class="{% if nbar == 'Restaurants' %}active{% endif %}"><a href="#">Restaurants</a></li>
+				<li class="{% if nbar == 'articles' %}active{% endif %}"><a href="{% url 'limau:article_all' %}">Articles</a></li>
+				<li class="{% if nbar == 'restaurants' %}active{% endif %}"><a href="{% url 'limau:restaurant_all' %}">Restaurants</a></li>
 			</ul>
 			</div>				    	      
 	    
@@ -160,10 +160,10 @@
 					<a href="{% url 'limau:recipe_all' %}"><i class="fa fa-cutlery" aria-hidden="true"></i></a>
 				</div>
 				<div class="col-xs-4 item" id="articles-footer-button">
-					<a href="#"><i class="fa fa-newspaper-o" aria-hidden="true"></i></a>
+					<a href="{% url 'limau:article_all' %}"><i class="fa fa-newspaper-o" aria-hidden="true"></i></a>
 				</div>
 				<div class="col-xs-4 item" id="restaurants-footer-button">
-					<a href="#"><i class="fa fa-home" aria-hidden="true"></i></a>
+					<a href="{% url 'limau:restaurant_all' %}"><i class="fa fa-home" aria-hidden="true"></i></a>
 				</div>					
 			</div>
 		</div>	

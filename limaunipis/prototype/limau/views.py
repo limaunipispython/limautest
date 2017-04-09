@@ -44,6 +44,41 @@ def recipe_all(request):
         template = page_template
     return HttpResponse(template.render(context, request))
 
+def article_all(request):
+    template = loader.get_template('mainsite/article_all.html')
+    page_template = loader.get_template('mainsite/article_entries.html')
+    try:
+        articles = Article.objects.all().order_by('-created_date')
+    except Article.DoesNotExist:
+        return HttpResponse("error 404")
+
+    context = {
+        'articles' : articles,
+        'page_template' : page_template,
+        'nbar' : "articles",
+    }
+
+    if request.is_ajax():
+        template = page_template
+
+    return HttpResponse(template.render(context, request))
+
+def restaurant_all(request):
+    template = loader.get_template('mainsite/restaurant_all.html')
+    page_template = loader.get_template('mainsite/restaurant_entries.html')
+    try:
+        restaurants = Restaurant.objects.all().order_by('-created_date')
+    except Restaurant.DoesNotExist:
+        return HttpResponse("error 404")
+    context = {
+        'restaurants' : restaurants,
+        'page_template' : page_template,
+        'nbar' : "restaurants",
+    }
+
+    if request.is_ajax():
+        template = page_template
+    return HttpResponse(template.render(context, request))
 
 def testpage_index(request):
     template = loader.get_template('mainsite/testpage_index.html')
