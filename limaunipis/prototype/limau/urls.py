@@ -20,8 +20,10 @@ from django.conf import settings
 from django.views import static
 from limau import views
 
+app_name = 'limau'
 urlpatterns = [
     url(r'^$', views.index, name='index'),
+    url(r'^recipe_all/$', views.recipe_all, name="recipe_all"),
     url(r'^testpage_index/$', views.testpage_index, name="testpage_index"),
     url(r'^testpage_model/$', views.testpage_model, name="testpage_model"),
 ]

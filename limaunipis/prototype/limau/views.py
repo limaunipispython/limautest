@@ -14,7 +14,7 @@ def index(request):
         recipes = Recipe.objects.all()
         articles = Article.objects.all()
         restaurants = Restaurant.objects.all()
-        content_list = sorted(chain(recipes, articles, restaurants), key=attrgetter('created_date'))
+        content_list = sorted(chain(recipes, articles, restaurants), key=attrgetter('created_date'), reverse=True)
     except (Recipe.DoesNotExist, Article.DoesNotExist, Restaurant.DoesNotExist):
         return HttpResponse("Error 404")
     context = {
@@ -25,6 +25,25 @@ def index(request):
     if request.is_ajax():
         template = page_template
     return HttpResponse(template.render(context, request))
+
+def recipe_all(request):
+    template = loader.get_template('mainsite/recipe_all.html')
+    page_template = loader.get_template('mainsite/recipe_entries.html')
+    try:
+        recipes = Recipe.objects.all().order_by('-created_date')
+    except Recipe.DoesNotExist:
+        return HttpResponse("Error 404")
+
+    context = {
+        'recipes' : recipes,
+        'page_template' : page_template,
+        'nbar' : "recipes"
+    }
+
+    if request.is_ajax():
+        template = page_template
+    return HttpResponse(template.render(context, request))
+
 
 def testpage_index(request):
     template = loader.get_template('mainsite/testpage_index.html')

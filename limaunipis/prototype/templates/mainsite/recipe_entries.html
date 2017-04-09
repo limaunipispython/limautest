@@ -1,0 +1,26 @@
+{% load class_tag %}
+
+{% load el_pagination_tags %}
+{% paginate recipes %}
+
+{% for item in recipes %}
+
+    <div class="row contentgroup">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="youtube">
+                <iframe width="854" height="480" src="{{ item.youtube_url }}" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="content_text">
+                <h4>{{ item.name_bm }}</h4>
+                <content>{{ item.description }}</content></br>
+                <button type="button" class="btn btn-success">Read More</button>
+            </div>
+        </div>
+    </div><hr class="style17">
+
+
+{% endfor %}
+
+{% show_more %}

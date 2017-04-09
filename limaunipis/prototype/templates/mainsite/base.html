@@ -74,8 +74,8 @@
 	  
 			<div class="col-md-12 col-sm-12 col-xs-12">
 				<ul class="nav nav-tabs nav-justified">
-				<li class="{% if nbar == 'home' %}active{% endif %}"><a href="#">Home</a></li>
-				<li class="{% if nbar == 'recipes' %}active{% endif %}"><a href="#">Recipes</a></li>
+				<li class="{% if nbar == 'home' %}active{% endif %}"><a href="{% url 'limau:index' %}">Home</a></li>
+				<li class="{% if nbar == 'recipes' %}active{% endif %}"><a href="{% url 'limau:recipe_all' %}">Recipes</a></li>
 				<li class="{% if nbar == 'articles' %}active{% endif %}"><a href="#">Articles</a></li>
 				<li class="{% if nbar == 'Restaurants' %}active{% endif %}"><a href="#">Restaurants</a></li>
 			</ul>
