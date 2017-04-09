@@ -136,6 +136,23 @@ class Restaurant(models.Model):
     def __str__(self):
         return self.name_bm
 
+class UserRecipe(models.Model):
+    # pending user field to identify who submit the recipe
+    recipecategory = models.ForeignKey(RecipeCategory)
+    name_bm = models.CharField(max_length=128)
+    name_en = models.TextField(max_length=128)
+    description = models.CharField(max_length=300)
+    content = models.TextField()
+    picture_1 = ProcessedImageField(upload_to='user_recipe_thumbnail', processors=[ResizeToFill(320,180)], format="JPEG", options={'quality':70})
+    picture_2 = ProcessedImageField(upload_to='user_recipe_thumbnail', processors=[ResizeToFill(320,180)], format="JPEG", options={'quality':70})
+    slug = models.SlugField(default='will-be-generated-once-save')
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name_bm)
+        super(UserRecipe, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.name_bm
 
 
 
