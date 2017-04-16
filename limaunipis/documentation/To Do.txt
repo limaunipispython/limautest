@@ -43,6 +43,7 @@ To do today
 	- complete 404 page - 7
 	- create form for user to update profile and submit post - 6
 	- create register and login view and template  - 5 
+	- inspect truncatechars tag for some of the descriptions
 
 
 
