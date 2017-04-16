@@ -50,8 +50,10 @@
             </div>
         </div>
         <div class="col-md-4 col-sm-4 col-xs-12">
-            <span class="limau_meter">Limau <i class="fa fa-tachometer" aria-hidden="true"></i> : </span>
-            <span class="stars">{{ item.starhtml | safe }}</span>
+            <div class="criteria">
+                <span class="limau_meter">Limau <i class="fa fa-tachometer" aria-hidden="true"></i> : </span>
+                <span class="stars">{{ item.starhtml | safe }}</span>
+            </div>
             <div class="restaurant_text">
                 <content>{{ item.description | truncatechars:100 | safe }}</content></br>
                 <location class="address"> ADDRESS: {{ item.address }}</location></br>
