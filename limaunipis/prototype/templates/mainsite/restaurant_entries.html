@@ -5,7 +5,7 @@
 
     <div class="row contentgroup">
         <div class="col-md-12 col-sm-12 col-xs-12 restaurant_title">
-            <h4> Limau Review : {{ item.name_bm }} </h4>
+            <h4><a href="{% url 'limau:restaurant_single' slug=item.slug %}">Limau Review : {{ item.name_bm }} </a></h4>
         </div>
         <div class="col-md-4 col-sm-4 col-xs-6">
             <div class="restaurant_pic">
@@ -21,8 +21,9 @@
             <span class="limau_meter">Limau <i class="fa fa-tachometer" aria-hidden="true"></i> : </span>
             <span class="stars">{{ item.starhtml | safe }}</span>
             <div class="restaurant_text">
-                <content>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</content></br>
-                <location class="address"> ADDRESS: {{ item.address }}</location>
+                <content>{{ item.description | truncatechars:100 | safe }}</content></br>
+                <location class="address"> ADDRESS: {{ item.address }}</location><br>
+                <button type="button" class="btn btn-success">Read More</button>
             </div>
         </div>
     </div><hr class="style17">

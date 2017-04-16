@@ -1,0 +1,66 @@
+{% extends 'mainsite/base.html' %}
+{% load staticfiles %}
+
+{% block body_block %}
+
+<div class="row contentgroup">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <h3>Limau Review : {{ restaurant.name_bm }}</h3>
+    </div>
+</div>
+
+<div class="row contentgroup">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+            <span>VERDICT :</span> <span class="stars" data-rating="{{ restaurant.limau_meter }}" data-num-stars="5" ></span>
+    </div>
+</div>
+
+<div class="row contentgroup">
+    <div class="col-md-4 col-sm-4 col-xs-6">
+        <div class="restaurant_pic">
+            <img src="{{ restaurant.building_thumbnail.url }}" style="width:100%">
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-4 col-xs-6">
+        <div class="restaurant_pic">
+            <img src="{{ restaurant.food_thumbnail_1.url }}" style="width:100%">
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-4 col-xs-12">
+        <div class="criteria">
+            <span>Food Quality     :  </span><span class="stars" data-rating="{{ restaurant.food_quality }}" data-num-stars="5" ></span></br>
+            <span>Varieties             :  </span><span class="stars" data-rating="{{ restaurant.food_variety }}" data-num-stars="5" ></span></br>
+            <span>Staff Etiquette :  </span><span class="stars" data-rating="{{ restaurant.etiquette }}" data-num-stars="5" ></span></br>
+            <span>Cleanliness        :  </span><span class="stars" data-rating="{{ restaurant.cleanliness }}" data-num-stars="5" ></span></br>
+            <span>Accessibility      :  </span><span class="stars" data-rating="{{ restaurant.access }}" data-num-stars="5" ></span></br>
+        </div>
+    </div>
+</div>
+
+<div class="row contentgroup">
+    <div class="col-md-8 col-sm-8 col-xs-12">
+            <p>{{ restaurant.description | safe }}</p>
+    </div>
+</div>
+
+<div class="row contentgroup">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+            <h4> Extra Pictures </h4>
+    </div>
+    <div class="col-md-4 col-sm-12 col-xs-12" style="margin-bottom:10px">
+        <div class="restaurant_pic">
+            <img src="{{ restaurant.menu_thumbnail.url }}" style="width:100%">
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-12 col-xs-12" style="margin-bottom:10px">
+        <div class="restaurant_pic">
+            <img src="{{ restaurant.food_thumbnail_2.url }}" style="width:100%">
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-12 col-xs-12" style="margin-bottom:10px">
+        <div class="restaurant_pic">
+            <img src="{{ restaurant.food_thumbnail_1.url }}" style="width:100%">
+        </div>
+    </div>
+</div>
+{% endblock %}

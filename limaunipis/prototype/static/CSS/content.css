@@ -40,6 +40,12 @@ body {
     margin-bottom: 10px;
 }
 
+.contentgroup h3 {
+    margin-top: 0;
+	margin-bottom: 0;
+}
+
+
 /*to set justified paragraph for text in mobile view*/
 @media (max-width: 800px) {
 	.content_text content {
@@ -107,10 +113,24 @@ hr.style17:after {
 	font-size: large;
 }
 
+
 .limau_meter {
 	color: green;
 	font-size: large;
 }
+
+/*star criteria*/
+@media (max-width: 800px) {
+	.criteria {
+	margin-top: 10px;
+	};
+
+}
+
+.criteria span {
+	white-space: pre;
+}
+
 
 
 

@@ -92,6 +92,18 @@ def recipe_single(request, slug):
     }
     return HttpResponse(template.render(context, request))
 
+def restaurant_single(request, slug):
+    template = loader.get_template('mainsite/restaurant_single.html')
+    try:
+        restaurant = Restaurant.objects.get(slug=slug)
+    except Restaurant.DoesNotExist:
+        return HttpResponse("error 404")
+    context = {
+        'restaurant': restaurant,
+        'nbar': "restaurants",
+    }
+    return HttpResponse(template.render(context, request))
+
 def testpage_index(request):
     template = loader.get_template('mainsite/testpage_index.html')
     context = {}

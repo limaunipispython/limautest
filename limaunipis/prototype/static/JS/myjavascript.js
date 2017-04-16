@@ -43,7 +43,10 @@ $.fn.stars = function() {
 	});
 };	
 
+$(document).ready(function(){
+	$(".stars").stars();
+})
 
 //  $('body').on('ready','.contentgroup',function(){
-// 	 $('stars').stars(;)
+// 	 $('star').stars(;)
 //  });
