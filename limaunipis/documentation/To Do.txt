@@ -36,15 +36,16 @@ To do today
 Date 4/4/2017
 To do today
 	- upload code to github and pythonanywhere - done
-	- complete user recipe model - half done, need to know how to hook to user foreignkey - 3
-	- complete authentication system -2 
-	- complete the view for user recipe model using template tag to make sure its loaded everytime - 4
-	- create the page for recipe, articles and restaurant, and all the single page - 1
-	- complete 404 page - 7
-	- create form for user to update profile and submit post - 6
-	- create register and login view and template  - 5 
-	- inspect truncatechars tag for some of the descriptions
+	- 3. complete user recipe model - half done, need to know how to hook to user foreignkey 
+	- 2. complete authentication system 
+	- 4. complete the view for user recipe model using template tag to make sure its loaded everytime 
+	- 1. create the page for recipe, articles and restaurant, and all the single page
+	- 7. complete 404 page
+	- 6. create form for user to update profile and submit post
+	- 5. create register and login view and template
+	- inspect truncatechars tag for some of the descriptions - done
+	
 
-
-
+temperory 
+youtube link = <iframe width="560" height="315" src="https://www.youtube.com/embed/zLkw-TZUCCk?list=PL41Z3fskCG1L1bwtiStNkMn37Lrp_SbZ6" frameborder="0" allowfullscreen></iframe>
 
