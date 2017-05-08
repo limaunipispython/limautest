@@ -1,0 +1,20 @@
+{% extends 'mainsite/base.html' %}
+{% load staticfiles %}
+
+{% block body_block %}
+
+<div class="row contentgroup">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <h3>{{ article.title_bm }}</h3>
+    </div>
+</div>
+
+<div class="row contentgroup hidden-sm hidden-xs">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <img src="{{ article.thumbnail.url }}" style="width:50%" ALIGN="right" >
+        <span> {{ article.text_bm | safe }} </span>
+    </div>    
+</div> 
+
+
+{% endblock %}

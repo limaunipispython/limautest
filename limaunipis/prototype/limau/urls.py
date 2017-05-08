@@ -28,6 +28,7 @@ urlpatterns = [
     url(r'^restaurant_all/$', views.restaurant_all, name="restaurant_all"),
     url(r'^recipe/(?P<slug>[\w\-]+)/$', views.recipe_single, name="recipe_single"),
     url(r'^restaurant/(?P<slug>[\w\-]+)/$', views.restaurant_single, name="restaurant_single"),
+    url(r'^article/(?P<slug>[\w\-]+)/$', views.article_single, name="article_single"),
     url(r'^testpage_index/$', views.testpage_index, name="testpage_index"),
     url(r'^testpage_model/$', views.testpage_model, name="testpage_model"),
 ]

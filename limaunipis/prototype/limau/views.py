@@ -5,7 +5,6 @@ from django.http import HttpResponse
 from django.template import loader
 from limau.models import Recipe, Article, Restaurant
 
-
 # Create your views here.
 def index(request):
     template = loader.get_template('mainsite/index.html')
@@ -101,6 +100,18 @@ def restaurant_single(request, slug):
     context = {
         'restaurant': restaurant,
         'nbar': "restaurants",
+    }
+    return HttpResponse(template.render(context, request))
+
+def article_single(request, slug):
+    template = loader.get_template('mainsite/article_single.html')
+    try:
+        article = Article.objects.get(slug=slug)
+    except article.DoesNotExist:
+        return HttpResponse("error 404")
+    context = {
+        'article' : article,
+        'nbar' : "articles",
     }
     return HttpResponse(template.render(context, request))
 
