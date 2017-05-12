@@ -10,11 +10,29 @@
 </div>
 
 <div class="row contentgroup hidden-sm hidden-xs">
-    <div class="col-md-12 col-sm-12 col-xs-12">
-        <img src="{{ article.thumbnail.url }}" style="width:50%" ALIGN="right" >
-        <span> {{ article.text_bm | safe }} </span>
-    </div>    
+    <div class="col-md-4">
+        <img src="{{ article.thumbnail.url }}" style="width:100%">
+        <div class="panel panel-info" style="margin-top: 10px">
+            <div class="panel-heading">RECENT ARTICLES</div>
+            <div class="panel-body">
+                {% for article in recent_articles %}
+                    <p> <a href="{% url 'limau:article_single' slug=article.slug %}"> {{article.title_bm}} </a> </p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <span class="article_text">{{article.text_bm | safe }}</span>
+    </div>      
 </div> 
 
+<div class="row contentgroup hidden-md hidden-lg ">
+    <div class="col-sm-12 col-xs-12">
+        <img src="{{ article.thumbnail.url }}" style="width:100%">
+    </div>
+    <div class="col-sm-12 col-xs-12">
+        <span class="article_text"> <div style="padding-top: 10px"> {{ article.text_bm | safe }}</div></span>
+    </div>  
+</div>
 
 {% endblock %}

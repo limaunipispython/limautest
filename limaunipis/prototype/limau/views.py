@@ -107,9 +107,11 @@ def article_single(request, slug):
     template = loader.get_template('mainsite/article_single.html')
     try:
         article = Article.objects.get(slug=slug)
+        recent_articles = Article.objects.all().order_by('-created_date')[:5]
     except article.DoesNotExist:
         return HttpResponse("error 404")
     context = {
+        'recent_articles' : recent_articles,
         'article' : article,
         'nbar' : "articles",
     }

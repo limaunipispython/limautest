@@ -133,6 +133,10 @@ hr.style17:after {
 	white-space: pre;
 }
 
+.article_text {
+	text-align: justify;
+}
 
-
-
+.article_image {
+	margin-left: 10px;
+}

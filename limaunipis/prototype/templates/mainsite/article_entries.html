@@ -11,8 +11,8 @@
         </div>
         <div class="col-md-6 col-sm-6 col-xs-6">
             <div class="content_text">
-                <h4>{{ item.title_bm }}</h4>
-                <content class="hidden-xs">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</content>
+                <h4><a href="{% url 'limau:article_single' slug=item.slug  %}">{{ item.title_bm }}</a></h4>
+                <content class="hidden-xs">{{ item.text_bm | truncatechars:300 | safe }}</content>
             </div>
         </div>
     </div><hr class="style17">
