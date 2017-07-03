@@ -33,19 +33,23 @@ To do today
 	- prepare the view for homepage with django endless pagination - done
 	- active tag for home, recipe, article restaurant - done
 
-Date 4/4/2017
+Date 3/7/2017
 To do today
 	- upload code to github and pythonanywhere - done
 	- 3. complete user recipe model - half done, need to know how to hook to user foreignkey 
 	- 2. complete authentication system 
 	- 4. complete the view for user recipe model using template tag to make sure its loaded everytime 
-	- 1. create the page for recipe, articles and restaurant, and all the single page
+	- 1. (DONE) create the page for recipe, articles and restaurant, and all the single page
 	- 7. complete 404 page
 	- 6. create form for user to update profile and submit post
 	- 5. create register and login view and template
+	- 8. update Restaurant model to include "price" attribute
 	- inspect truncatechars tag for some of the descriptions - done
 	
 
 temperory 
 youtube link = <iframe width="560" height="315" src="https://www.youtube.com/embed/zLkw-TZUCCk?list=PL41Z3fskCG1L1bwtiStNkMn37Lrp_SbZ6" frameborder="0" allowfullscreen></iframe>
 
+Notes 
+-  Need to define/program what if user does not upload picture
+-  how to relate userRecipe model to user who post the recipe (tru view?, tru model save Super?)
