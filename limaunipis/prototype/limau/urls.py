@@ -32,6 +32,8 @@ urlpatterns = [
     url(r'^testpage_index/$', views.testpage_index, name="testpage_index"),
     url(r'^testpage_model/$', views.testpage_model, name="testpage_model"),
     url(r'^register/$', views.register, name="register"),
+    url(r'^login/$', views.user_login, name="login"),
+    url(r'^logout/$', views.user_logout, name="logout"),
 ]
 
 media_url = url(r'media/(?P<path>.*)', static.serve, {'document_root' : settings.MEDIA_ROOT}, name="media_folder")
