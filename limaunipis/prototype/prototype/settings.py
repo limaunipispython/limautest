@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'limau',
     'imagekit',
     'el_pagination',
+    'registration',
 
 
 ]
@@ -134,7 +135,22 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 MEDIA_URL = '/media/'
 
-LOGIN_URL = '/limau/login/'
+LOGIN_URL = '/accounts/login/'
+
+# Django Registration Redux settings
+
+# if true user can register
+REGISTRATION_OPEN = True
+
+# One week activation window
+ACCOUNT_ACTIVATION_DAYS = 7
+
+# if true, user will automatically logged in
+REGISTRATION_AUTO_LOGIN = True
+
+# The page you want users to arrive at after they successfully logged in
+LOGIN_REDIRECT_URL = '/recipe_all/'
+
 
 
 

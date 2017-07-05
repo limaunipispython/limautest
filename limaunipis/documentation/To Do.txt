@@ -44,6 +44,7 @@ To do today
 	- 6. create form for user to update profile and submit post
 	- 5. create register and login view and template
 	- 8. update Restaurant model to include "price" attribute
+	- 9. 
 	- inspect truncatechars tag for some of the descriptions - done
 	
 
@@ -53,3 +54,4 @@ youtube link = <iframe width="560" height="315" src="https://www.youtube.com/emb
 Notes 
 -  Need to define/program what if user does not upload picture
 -  how to relate userRecipe model to user who post the recipe (tru view?, tru model save Super?)
+-  Update HTML for "welcome User" preferably use bootstrap
