@@ -55,3 +55,4 @@ Notes
 -  Need to define/program what if user does not upload picture
 -  how to relate userRecipe model to user who post the recipe (tru view?, tru model save Super?)
 -  Update HTML for "welcome User" preferably use bootstrap
+-  Need to prepare account management page for users to update their profile
