@@ -149,8 +149,13 @@ ACCOUNT_ACTIVATION_DAYS = 7
 REGISTRATION_AUTO_LOGIN = True
 
 # The page you want users to arrive at after they successfully logged in
-LOGIN_REDIRECT_URL = '/recipe_all/'
+LOGIN_REDIRECT_URL = '/'
 
-
+# email settings
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'arekay17@gmail.com'
+EMAIL_HOST_PASSWORD = 'wwg@5812'
+EMAIL_PORT = 587
 
 

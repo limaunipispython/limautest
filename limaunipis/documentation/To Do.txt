@@ -52,7 +52,9 @@ temperory
 youtube link = <iframe width="560" height="315" src="https://www.youtube.com/embed/zLkw-TZUCCk?list=PL41Z3fskCG1L1bwtiStNkMn37Lrp_SbZ6" frameborder="0" allowfullscreen></iframe>
 
 Notes 
--  Need to define/program what if user does not upload picture
+-  Need to define/program what if user does not upload picture (default pic?)
 -  how to relate userRecipe model to user who post the recipe (tru view?, tru model save Super?)
 -  Update HTML for "welcome User" preferably use bootstrap
 -  Need to prepare account management page for users to update their profile
+-  Need to set unique email required for registration and set email as required login criteria instead of username
+-  Email verification for authentication needed in case users forgot password

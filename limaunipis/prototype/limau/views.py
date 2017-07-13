@@ -8,6 +8,7 @@ from limau.forms import UserForm, UserProfileForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
+from django.core.mail import EmailMessage
 
 # Create your views here.
 def index(request):
@@ -217,3 +218,10 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('limau:index'))
+
+# email testing
+def emailtest(request):
+    email = EmailMessage('Limau Nipis Password Recovery', 'Your password is this and this', to=['muzakkirm1988@gmail.com'])
+    email.send()
+    return HttpResponse("sending email")
+   
