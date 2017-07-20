@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth', # required for auth
     'django.contrib.contenttypes', # required for auth
+    # 'django.contrib.sites',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
@@ -139,17 +140,15 @@ LOGIN_URL = '/accounts/login/'
 
 # Django Registration Redux settings
 
-# if true user can register
+# If True, users can register
 REGISTRATION_OPEN = True
-
-# One week activation window
+# One-week activation window; you may, of course, use a different value.
 ACCOUNT_ACTIVATION_DAYS = 7
+# If True, the user will be automatically logged in.
+REGISTRATION_AUTO_LOGIN = False
+# The page you want users to arrive at after they successfully log in
+LOGIN_REDIRECT_URL = '/recipe_all/'
 
-# if true, user will automatically logged in
-REGISTRATION_AUTO_LOGIN = True
-
-# The page you want users to arrive at after they successfully logged in
-LOGIN_REDIRECT_URL = '/'
 
 # email settings
 EMAIL_USE_TLS = True
@@ -157,5 +156,6 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'arekay17@gmail.com'
 EMAIL_HOST_PASSWORD = 'wwg@5812'
 EMAIL_PORT = 587
+
 
 
