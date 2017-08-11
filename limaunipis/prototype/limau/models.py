@@ -4,6 +4,7 @@ from django.utils import timezone
 from imagekit.models import ImageSpecField, ProcessedImageField
 from imagekit.processors import ResizeToFill
 from limau.choices import * 
+from django.contrib.auth.models import User
 # Create your models here.
 
 # Recipe category class like [Malay, Asian, Western]
@@ -153,6 +154,18 @@ class UserRecipe(models.Model):
 
     def __str__(self):
         return self.name_bm
+
+# Additional attribute for user model
+# Default User model contains username, password, email, first name, surname
+class UserProfile(models.Model):
+    # Link UserProfile to a User model instance
+    user = models.OneToOneField(User)
+
+    # Additional attributes to be added  
+    picture = ProcessedImageField(upload_to="user_picture", processors=[ResizeToFill(180, 180)], format="JPEG", options={'quality':70})
+
+    def __str__(self):
+        return self.user.username
 
 
 

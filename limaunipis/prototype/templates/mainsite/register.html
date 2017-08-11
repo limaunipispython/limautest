@@ -1,0 +1,35 @@
+{% extends 'mainsite/base.html' %}
+{% load staticfiles %}
+
+{% block body_block %}
+
+<div class="row contentgroup">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <h3>REGISTRATION FORM</h3>
+    </div>
+</div>
+
+{% if registered %}
+    <div class="row contentgroup">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <h2> Thank you for registering with Limau Nipis </h2>
+        </div>
+    </div>
+{% else %}
+    <div class="row contentgroup">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <h2> Please fill in all the details below </h2>
+            <form id="user_form" method="post" action="{% url 'limau:register' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            {{ user_form.as_p }}
+            {{ profile_form.as_p }}
+
+            <input type="submit" name="submit" value="Register" />
+            </form>
+        </div>
+    </div>
+{% endif %}
+
+{% endblock %}
+

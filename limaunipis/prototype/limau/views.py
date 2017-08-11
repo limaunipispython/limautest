@@ -1,9 +1,14 @@
 from operator import attrgetter
 from itertools import chain
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from limau.models import Recipe, Article, Restaurant
+from limau.forms import UserForm, UserProfileForm
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.core.urlresolvers import reverse
+from django.core.mail import EmailMessage
 
 # Create your views here.
 def index(request):
@@ -136,3 +141,87 @@ def testpage_model(request):
         'content_list' : content_list,
     }
     return HttpResponse(template.render(context, request))
+
+# registration view
+def register(request):
+    template = loader.get_template('mainsite/register.html')
+  
+    # a boolean value to tell registration successful or not
+    # initially set to false, true when succeed
+    registered = False
+
+    if request.method == 'POST':
+        user_form = UserForm(data=request.POST)
+        profile_form = UserProfileForm(request.POST, request.FILES)
+
+        if user_form.is_valid() and profile_form.is_valid():
+            user = user_form.save()
+            user.set_password(user.password)
+            user.save()
+
+            # since we need to define profile.user ourself
+            # we delay the profile.save() into the database
+            profile = profile_form.save(commit=False)
+            profile.user = user
+
+            if 'picture' in request.FILES:
+                profile.picture = request.FILES['picture']
+
+            profile.save()
+            registered = True
+        else:
+            print(user_form.errors, profile_form.errors)
+    else:
+        # render HTML form for the user to fill in
+        user_form = UserForm()
+        profile_form = UserProfileForm()
+
+    context = {
+        'user_form': user_form,
+        'profile_form': profile_form,
+        'registered' : registered,
+    }
+
+    return HttpResponse(template.render(context, request))
+
+# Login Page view
+def user_login(request):
+    template = loader.get_template('mainsite/login.html')
+    context = {}
+
+    if request.method == 'POST':
+        # 'username' should be based on input name in html
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(username=username, password=password)
+        print(user)
+
+        # if user found in the database it well return True 
+        if user:
+            # user account might be disabled
+            if user.is_active:
+                login(request, user)
+                # reverse is required to obtain URL
+                return HttpResponseRedirect(reverse('limau:index'))
+            else:
+                return HttpResponse("Your Account is disabled, please contact administrator")
+        else: 
+            print("invalid login details: {0}, {1} ".format(username, password))
+            # better to create a template for wrong login and use HttpResponseRedirect
+            return HttpResponse("Invalid login details supplied")
+    else:
+        return HttpResponse(template.render(context, request))
+
+
+@login_required
+def user_logout(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('limau:index'))
+
+# email testing
+def emailtest(request):
+    email = EmailMessage('Limau Nipis Password Recovery', 'Your password is this and this', to=['muzakkirm1988@gmail.com'])
+    email.send()
+    return HttpResponse("sending email")
+   
