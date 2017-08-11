@@ -9,13 +9,13 @@ To do today:
 	- Start a project with the title of limaunipis/prototype
 	- Download Github, sign in with the account of arekay17@gmail.com, password : wwg@5812
 	- Create a new gmail account with username of : limaunipispython, password : wwg@5812
-	- Create a new Github account with username of : limaunipispython, password : wwg@5812"
+	- Create a new Github account with username of : limaunipispython, password : wwg@5812
 	- Create new account at pythonanywhere with username of : limaunipispython, password : wwg@5812
 	- Upload and test new project in pythonanywhere server -->KIV
 
 Date-- 10/3/2017
 
-To do todaygit
+To do today
 	- Set up static media server in django
 	- Link homepage with the latest HTML design 
 	- Improve design based on sketch
