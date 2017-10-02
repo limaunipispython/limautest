@@ -1,4 +1,4 @@
-import os 
+jimport os 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'prototype.settings')
 
 import django
