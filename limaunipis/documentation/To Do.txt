@@ -58,3 +58,5 @@ Notes
 -  Need to prepare account management page for users to update their profile
 -  Need to set unique email required for registration and set email as required login criteria instead of username
 -  Email verification for authentication needed in case users forgot password
+
+-- testing git status on lenovo miix 3
