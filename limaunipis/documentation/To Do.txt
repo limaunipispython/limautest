@@ -60,4 +60,4 @@ Notes
 -  Email verification for authentication needed in case users forgot password
 
 -- testing git status on lenovo miix 3
--- testing second git push from lenovo miix 3
+-- testing second git push from lenovo miix
