@@ -1,3 +1,16 @@
+COMPLETE USER RECIPE MODEL
+
+Objective
+- to create user field in models.py
+    - code : user = models.ForeignKey('auth.User')
+- create UserRecipe form in forms.py to post UserRecipe models instance
+- create newRecipePost view to handle new post and submit post instance 
+- link newRecipePost with url 
+- create html form to handle newRecipePost
+- create editRecipePost view to handle edit post
+- link editRecipePost with url
+- in base.html find place to put the link for user to post new_recipe and isolate only form
+  authenticated user
 
 
 
