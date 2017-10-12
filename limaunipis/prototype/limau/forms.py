@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from limau.models import UserProfile
+from limau.models import UserProfile, UserRecipe
 
 class UserForm(forms.ModelForm):
     """Form definition for User."""
@@ -25,3 +25,9 @@ class UserProfileForm(forms.ModelForm):
         fields = ('picture',)
 
 
+class UserRecipeForm(forms.ModelForm):
+    # no widget 
+
+    class Meta: 
+        model = UserRecipe
+        fields = ('recipecategory', 'name_bm', 'name_en', 'description', 'content', 'picture_1', 'picture_2')

@@ -1,14 +1,15 @@
 from operator import attrgetter
 from itertools import chain
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from limau.models import Recipe, Article, Restaurant
-from limau.forms import UserForm, UserProfileForm
+from limau.forms import UserForm, UserProfileForm, UserRecipeForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.core.mail import EmailMessage
+
 
 # Create your views here.
 def index(request):
@@ -212,6 +213,31 @@ def user_login(request):
             return HttpResponse("Invalid login details supplied")
     else:
         return HttpResponse(template.render(context, request))
+
+#need to include decorator to only allow authenticated user to access
+@login_required
+def user_recipe_post(request):
+    template = loader.get_template('forms/userrecipeform.html')
+    if request.method == "POST":
+        form = UserRecipeForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit = False)
+            post.user = request.user
+            if 'picture_1' in request.FILES:
+                post.picture_1 = request.FILES['picture_1']
+            if 'picture_2' in request.FILES:
+                post.picture_2 = request.FILES['picture_2']
+            post.save()
+            return redirect('limau:index')
+    else:   
+        form = UserRecipeForm()
+    
+    context = {
+        'form' : form,
+    }
+
+    return HttpResponse(template.render(context,request))
+    
 
 
 @login_required

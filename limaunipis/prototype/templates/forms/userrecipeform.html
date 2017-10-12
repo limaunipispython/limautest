@@ -1,0 +1,14 @@
+{% extends 'mainsite/base.html' %}
+{% load staticfiles %}
+
+{% block body_block %}
+<h3>user recipe form</h3>
+
+<form id="form" method="post" class="post-form" action="{% url 'limau:user_recipe_post' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="save btn btn-default">Save</button>
+
+</form>
+
+{% endblock %}
