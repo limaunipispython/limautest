@@ -1,9 +1,9 @@
 from operator import attrgetter
 from itertools import chain
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
-from limau.models import Recipe, Article, Restaurant
+from limau.models import Recipe, Article, Restaurant, UserRecipe
 from limau.forms import UserForm, UserProfileForm, UserRecipeForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -214,6 +214,7 @@ def user_login(request):
     else:
         return HttpResponse(template.render(context, request))
 
+# USER RECIPE VIEW
 #need to include decorator to only allow authenticated user to access
 @login_required
 def user_recipe_post(request):
@@ -237,8 +238,34 @@ def user_recipe_post(request):
     }
 
     return HttpResponse(template.render(context,request))
-    
 
+#single user recipe view
+def user_recipe_single(request, slug):
+    template = loader.get_template('mainsite/user_recipe_single.html')
+
+    try:
+        user_recipe = UserRecipe.objects.get(slug=slug)
+    except UserRecipe.DoesNotExist:
+        return HttpResponse("error 404")
+    context = {
+        'user_recipe' : user_recipe,
+        'nbar' : 'recipes',
+    }
+    return HttpResponse(template.render(context, request))
+
+def user_recipe_edit(request, pk):
+    user_recipe = get_object_or_404(UserRecipe, pk=pk)
+    template = loader.get_template('forms/userrecipeform.html')
+
+    form = UserRecipeForm(instance = user_recipe)
+    context = {
+        'form' : form,
+    }
+    return HttpResponse(template.render(context, request))
+
+
+
+    
 
 @login_required
 def user_logout(request):

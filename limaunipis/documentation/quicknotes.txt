@@ -7,18 +7,18 @@ Objective
 - create newRecipePost view to handle new post and submit post instance - done
 - link newRecipePost with url - done
 - create html form to handle newRecipePost - done
-- create editRecipePost view to handle edit post
+- draft view and html for userRecipeSingle
+- create editRecipePost view to handle edit post 
 - link editRecipePost with url
-- in base.html find place to put the link for user to post new_recipe and isolate only form
+- in base.html find place to put the link for user to post new_recipe and isolate only from
   authenticated user
 - create html to display list of user posted recipe and picture
-- create html to displau single page of user recipe as well
-- optimize user recipe to include ingredients     
+- create html to display single page of user recipe as well
+- optimize user recipe to include ingredients
+- solve how to only allow logged in user to post user recipe - right now it would give error     
 
-
-
-- brief of how django works
-    - user type url and it goes to urls.py
-    - urls.py map to the right view in the views.py
-    - views.py map the right template and the right context to be passed to the template
-    - template rendered in the user browser
+issues
+- currently when edit post it create another post instance instead of editing the current post
+- all user can see the edit button so they can change the content
+    - we want only user who create the post able to see the edit button
+- the picture need to be reuploaded if post edits

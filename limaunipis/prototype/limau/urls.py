@@ -36,6 +36,8 @@ urlpatterns = [
     url(r'^logout/$', views.user_logout, name="logout"),
     url(r'^emailtest/$', views.emailtest, name="emailtest"),
     url(r'^userrecipeform/$', views.user_recipe_post, name="user_recipe_post"),
+    url(r'^user_recipe/(?P<slug>[\w\-]+)/$', views.user_recipe_single, name="user_recipe_single"),
+    url(r'^user_recipe/(?P<pk>\d+)/edit/$', views.user_recipe_edit, name="user_recipe_edit"),
 ]
 
 media_url = url(r'media/(?P<path>.*)', static.serve, {'document_root' : settings.MEDIA_ROOT}, name="media_folder")
