@@ -20,5 +20,13 @@ Objective
 issues
 - currently when edit post it create another post instance instead of editing the current post
 - all user can see the edit button so they can change the content
-    - we want only user who create the post able to see the edit button
-- the picture need to be reuploaded if post edits
+    - we want only user who create the post able to see the edit button -OK
+- the picture need to be reuploaded if post edit
+
+PLAN ON HOW TO TACKLE THE INSTANCE PROBLEM
+
+1. in user_recipe_edit view change the template to point to newly created userrecipeform_edit.html
+2. copy userrecipeform content into userrecipeform_edit.html
+3. point the action attribute of the html form to user_recipe_edit
+4. specify in the user_recipe_edit if the request == 'POST' form = UserRecipeForm(request.POST, instance=user_recipe)
+5. assumption if we define the form as in step 4 the user_recipe.save() method would update the model rather than create new instance

@@ -225,14 +225,13 @@ def user_recipe_post(request):
             post = form.save(commit = False)
             post.user = request.user
             if 'picture_1' in request.FILES:
-                post.picture_1 = request.FILES['picture_1']
+                post.picture_1  = request.FILES['picture_1']
             if 'picture_2' in request.FILES:
                 post.picture_2 = request.FILES['picture_2']
             post.save()
-            return redirect('limau:index')
+            return redirect('limau:user_recipe_single', slug=post.slug)
     else:   
         form = UserRecipeForm()
-    
     context = {
         'form' : form,
     }
@@ -255,8 +254,19 @@ def user_recipe_single(request, slug):
 
 def user_recipe_edit(request, pk):
     user_recipe = get_object_or_404(UserRecipe, pk=pk)
-    template = loader.get_template('forms/userrecipeform.html')
-
+    template = loader.get_template('forms/userrecipeform_edit.html') # the problem is here since the user submit button submit to user recipe post
+    if request.method == 'POST':
+        form = UserRecipeForm(request.POST, request.FILES, instance = user_recipe)
+        if form.is_valid():
+            post = form.save(commit = False)
+            post.user = request.user
+            if 'picture_1' in request.FILES:
+                post.picture_1  = request.FILES['picture_1']
+            if 'picture_2' in request.FILES:
+                post.picture_2 = request.FILES['picture_2']
+            post.save()
+            return redirect('limau:user_recipe_single', slug=post.slug)
+        
     form = UserRecipeForm(instance = user_recipe)
     context = {
         'form' : form,
