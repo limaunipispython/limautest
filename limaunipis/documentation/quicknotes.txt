@@ -7,12 +7,21 @@ Objective
 - create newRecipePost view to handle new post and submit post instance - done
 - link newRecipePost with url - done
 - create html form to handle newRecipePost - done
-- draft view and html for userRecipeSingle
-- create editRecipePost view to handle edit post 
-- link editRecipePost with url
-- in base.html find place to put the link for user to post new_recipe and isolate only from
+- draft view and html for userRecipeSingle - done
+- create editRecipePost view to handle edit post - done
+- link editRecipePost with url - done
+-> in base.html find place to put the link for user to post new_recipe and isolate only from
   authenticated user
-- create html to display list of user posted recipe and picture
+-> create html to display list of user posted recipe and picture
 - create html to display single page of user recipe as well
 - optimize user recipe to include ingredients
 - solve how to only allow logged in user to post user recipe - right now it would give error     
+
+How To Do:
+1. put bootstrap html button right below 'welcome guest' notification for desktop 
+2. link button to user_recipe_post url
+3. arrange item in the sidebar to include new user posted recipe
+4. create html with ajax to display user posted recipe list (user_recipe_entries.html)
+4. link USER POSTED RECIPE header in the sidebar to user_recipe_entries.html
+5. create link to user_recipe_entries on navbar - for mobile users
+6. update user_recipe_single.html to be better follow standard -- need to draft the wireframe and update model
