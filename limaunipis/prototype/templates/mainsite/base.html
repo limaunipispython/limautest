@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 {% load staticfiles %}
 
+{% load limau_template_tags %}
+
 <html lang="en">
   	<head>
 		<meta charset="utf-8">
@@ -126,12 +128,12 @@
 							</div>
 						</div>
 						<div class="row" style="margin-bottom: 10px;">
-							<a href="{% url 'limau:user_recipe_post' %}" class='btn	btn-default btn-block'>Post Your Recipe!</a>		
+							<a href="{% url 'limau:user_recipe_post' %}" class='btn	btn-default	 btn-block'>Post Your Recipe!</a>		
 						</div>
 						<div class="row">
 							  <div class="panel panel-primary">
       						<div class="panel-heading">USER POSTED RECIPE</div>
-      						<div class="panel-body">
+      								<!-- <div class="panel-body">
 										<div class="clearfix">
 											<div class="col-md-4">
 												<img src="/media/user_picture.png" class="user_pic" style="width:100%">
@@ -152,7 +154,9 @@
 												<p>Gulai Ayam Cendawan</p>
 											</div>
 										</div>
-									</div>
+									</div> -->
+									{% get_recent_user_recipe %}
+
 									
    						 </div>
 						</div>

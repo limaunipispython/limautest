@@ -1,0 +1,16 @@
+{% if user_recipe %}
+
+    {% for recipe in user_recipe %}
+    <div class="panel-body">
+        <div class="clearfix">
+            <div class="col-md-12">
+                {{ recipe.name_bm }}</br>
+                {{ recipe.user }}
+            </div>
+        </div>
+    </div>
+    {% endfor%}
+
+{% else %}
+    there is no recipe posted by user
+{% endif %}

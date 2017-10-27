@@ -20,7 +20,10 @@ How To Do:
 1. put bootstrap html button right below 'welcome guest' notification for desktop - done
 2. link button to user_recipe_post url - done
 3. arrange item in the sidebar to include latest 5 new user recipe
-4. create html with ajax to display user posted recipe list (user_recipe_entries.html)
-4. link USER POSTED RECIPE header in the sidebar to user_recipe_entries.html
-5. create link to user_recipe_entries on navbar - for mobile users
-6. update user_recipe_single.html to be better follow standard -- need to draft the wireframe and update model
+  - need to be done with django templatetags - done
+  - modify the html to better visualize the sidebar of user recipe - KIV
+4. create code to create copy instance of user recipe to test ajax
+5. create html with ajax to display user posted recipe list (user_recipe_entries.html)
+6. link USER POSTED RECIPE header in the sidebar to user_recipe_entries.html
+7. create link to user_recipe_entries on navbar - for mobile users
+8. update user_recipe_single.html to be better follow standard -- need to draft the wireframe and update model
