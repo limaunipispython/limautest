@@ -1,38 +1,3 @@
-Date--5/3/2017
---------------
-General Pending
-	1. 404 default page
-	2. Jquery star rating system
-	3. active tag for home, recipe, articles and restaurant
-
-To do today:
-	- Start a project with the title of limaunipis/prototype
-	- Download Github, sign in with the account of arekay17@gmail.com, password : wwg@5812
-	- Create a new gmail account with username of : limaunipispython, password : wwg@5812
-	- Create a new Github account with username of : limaunipispython, password : wwg@5812
-	- Create new account at pythonanywhere with username of : limaunipispython, password : wwg@5812
-	- Upload and test new project in pythonanywhere server -->KIV
-
-Date-- 10/3/2017
-
-To do today
-	- Set up static media server in django
-	- Link homepage with the latest HTML design 
-	- Improve design based on sketch
-	- Create models for Recipe, Articles and Restaurant Review
-
-Date-- 23/3/2017
-Have done today 
-	- wrap testpage_index youtube <iframe> embed code with wrapper (.youtube class) in css to maintain responsive effect
-	- only allow the text for articles to be displayed in desktop view.
-	- currently css media tag assume that anything lower than 800px should be considered as mobile view which includes tablet.
-
-To do today 
-	- complete design for index homepage (testpage index)
-	- prepare django model for recipe, ingredient, articles, restaurant, user recipe(KIV) with django imagekit - half done
-	- prepare the view for homepage with django endless pagination - done
-	- active tag for home, recipe, article restaurant - done
-
 Date 3/7/2017
 To do today
 	- upload code to github and pythonanywhere - done
@@ -42,22 +7,16 @@ To do today
 	- 1. (DONE) create the page for recipe, articles and restaurant, and all the single page
 	- 7. complete 404 page
 	- 6. create form for user to update profile and submit post
-	- 5. create register and login view and template
 	- 8. update Restaurant model to include "price" attribute
-	- 9. 
-	- inspect truncatechars tag for some of the descriptions - done
 	
 
 temperory 
 youtube link = <iframe width="560" height="315" src="https://www.youtube.com/embed/zLkw-TZUCCk?list=PL41Z3fskCG1L1bwtiStNkMn37Lrp_SbZ6" frameborder="0" allowfullscreen></iframe>
 
-Notes 
+Notes next to do 
 -  Need to define/program what if user does not upload picture (default pic?)
--  how to relate userRecipe model to user who post the recipe (tru view?, tru model save Super?)
 -  Update HTML for "welcome User" preferably use bootstrap
 -  Need to prepare account management page for users to update their profile
 -  Need to set unique email required for registration and set email as required login criteria instead of username
--  Email verification for authentication needed in case users forgot password
-
--- testing git status on lenovo miix 3
--- testing second git push from lenovo miix
+-  Check the order or recipe, articles and restaurants to follow our the latest created date first (possibly inverse now)
+-  Change youtube presentation to thumbnail only to speed up loading processs

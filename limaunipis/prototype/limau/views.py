@@ -49,6 +49,25 @@ def recipe_all(request):
         template = page_template
     return HttpResponse(template.render(context, request))
 
+def user_recipe_all(request):
+    template = loader.get_template('mainsite/user_recipe_all.html')
+    page_template = loader.get_template('mainsite/user_recipe_entries.html')
+    try:
+        recipes = UserRecipe.objects.all().order_by('-created_date')
+    except Recipe.DoesNotExist:
+        return HttpResponse("Error 404")
+
+    context = {
+        'recipes' : recipes,
+        'page_template' : page_template,
+        'nbar' : "recipes"
+    }
+
+    if request.is_ajax():
+        template = page_template
+    return HttpResponse(template.render(context, request))
+
+
 def article_all(request):
     template = loader.get_template('mainsite/article_all.html')
     page_template = loader.get_template('mainsite/article_entries.html')

@@ -143,11 +143,12 @@ class UserRecipe(models.Model):
     recipecategory = models.ForeignKey(RecipeCategory)
     name_bm = models.CharField(max_length=128)
     name_en = models.CharField(max_length=128)
-    description = models.CharField(max_length=300) #this one should be a textfield 
+    description = models.TextField(max_length=300) #this one should be a textfield 
     content = models.TextField()
     picture_1 = ProcessedImageField(upload_to='user_recipe_thumbnail', processors=[ResizeToFill(320,180)], format="JPEG", options={'quality':70})
     picture_2 = ProcessedImageField(upload_to='user_recipe_thumbnail', processors=[ResizeToFill(320,180)], format="JPEG", options={'quality':70})
     #need to add postdate field
+    created_date = models.DateTimeField(default=timezone.now)
     slug = models.SlugField(default='will-be-generated-once-save')
 
     def save(self, *args, **kwargs):

@@ -7,6 +7,7 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
         <h3>{{ user_recipe.name_bm }}</h3>
         <p>{{ user_recipe.content | safe }}</p>
+        <p> created date : {{ user_recipe.created_date }}</p>
         {% if request.user == user_recipe.user %}
         <a class="btn btn-default" href="{% url 'limau:user_recipe_edit' pk=user_recipe.pk %}" ><span class="glyphicon glyphicon-pencil"></span></a>
         {% endif %}
