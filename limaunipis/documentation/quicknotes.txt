@@ -2,6 +2,6 @@ OBJECTIVE: User Recipe Back End and Front End Draft
 
 How To Do:
 1. user_recipe_single.html
-    - divide by col
+    - insert bootstrap panel with 5 latest user posted recipe below the picture 
 
 

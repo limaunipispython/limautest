@@ -9,6 +9,7 @@ MAJOR
 		- Include 5 latest user posted recipe below the recipe picture
 	- Proper draft for sidebar top 5 user recipe
 3. User Profile Back End and Front End Draft
+4. Category views for articles, recipe, restaurant and user_recipe
 4. 404 Page and link to all views
 5. HTML and CSS beautification for all function with bootstrap and responsive mobile testing 
 5. Function Testing 

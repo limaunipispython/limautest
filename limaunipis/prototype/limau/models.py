@@ -127,7 +127,7 @@ class Restaurant(models.Model):
         voidStar = '<i class="fa fa-star-o"></i>'
         value = multiplierFull*fullStar + multiplierVoid*voidStar
         return value
-
+        
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name_bm)
         self.limau_meter = self.calculate_meter()

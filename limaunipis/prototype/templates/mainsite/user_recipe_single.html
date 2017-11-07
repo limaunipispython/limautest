@@ -5,23 +5,37 @@
 
 <div class="row contentgroup">
     <div class="col-md-5">
-        <img src="{{ user_recipe.picture_1.url }}" style="width:100%">  
+        <img src="{{ user_recipe.picture_1.url }}" class="img-rounded" style="width:100%">  
+        <div class="panel panel-default hidden-sm hidden-xs" style="margin-top : 10px;">
+            <div class="panel-heading">Latest {{ user_recipe.user }} Posted Recipe</div>
+            <div class="panel-body">
+                {% for recipe in latest_recipe %}
+                    <a href="{% url 'limau:user_recipe_single' slug=recipe.slug %}">{{ recipe.name_bm }}</a></br>
+                {% endfor %}    
+            </div>
+        </div> 
     </div>
     <div class="col-md-7">
-        <h3> {{ user_recipe.name_bm }} </h3></br>
-        <span class="article_text">{{ user_recipe.content | safe }}</span> 
+        <h3> {{ user_recipe.name_bm }} </h3>
+        <h4> by {{ user_recipe.user }}</h4>
+        {% if request.user == user_recipe.user %}
+        <a class="btn btn-default" href="{% url 'limau:user_recipe_edit' pk=user_recipe.pk %}" ><span class="glyphicon glyphicon-pencil"> EDIT </span></a>
+        {% endif %}</br>
+        <span class="article_text">{{ user_recipe.content | safe }}</span>
+        <div class="panel panel-default hidden-md hidden-lg" style="margin-top : 10px;">
+            <div class="panel-heading">Latest {{ user_recipe.user }} Posted Recipe</div>
+            <div class="panel-body">
+                {% for recipe in latest_recipe %}
+                    <a href="{% url 'limau:user_recipe_single' slug=recipe.slug %}">{{ recipe.name_bm }}</a></br>
+                {% endfor %}    
+            </div>
+        </div>
+        
+        
     </div>
 </div></br>
 
 
-
-<div class="row contentgroup">
-    <div class="col-md-12 col-sm-12 col-xs-12">
-        {% if request.user == user_recipe.user %}
-        <a class="btn btn-default" href="{% url 'limau:user_recipe_edit' pk=user_recipe.pk %}" ><span class="glyphicon glyphicon-pencil"> EDIT1 </span></a>
-        {% endif %}
-    </div>
-</div>
 
 
 

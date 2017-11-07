@@ -263,10 +263,12 @@ def user_recipe_single(request, slug):
 
     try:
         user_recipe = UserRecipe.objects.get(slug=slug)
+        latest_recipe = UserRecipe.objects.filter(user=user_recipe.user).order_by('-created_date')[:5]
     except UserRecipe.DoesNotExist:
         return HttpResponse("error 404")
     context = {
         'user_recipe' : user_recipe,
+        'latest_recipe': latest_recipe,
         'nbar' : 'recipes',
     }
     return HttpResponse(template.render(context, request))
