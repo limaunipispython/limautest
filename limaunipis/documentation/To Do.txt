@@ -1,22 +1,26 @@
-Date 3/7/2017
-To do today
-	- upload code to github and pythonanywhere - done
-	- 3. complete user recipe model - half done, need to know how to hook to user foreignkey 
-	- 2. complete authentication system 
-	- 4. complete the view for user recipe model using template tag to make sure its loaded everytime 
-	- 1. (DONE) create the page for recipe, articles and restaurant, and all the single page
-	- 7. complete 404 page
-	- 6. create form for user to update profile and submit post
-	- 8. update Restaurant model to include "price" attribute
+Date 2/11/2017
+
+MAJOR
+1. Authentication Back End and Front End Draft - 90% Done
+	- Need to find a way to make email unique, one email can only hold one account
+	- Set email as the required login criteria - currently optional but preferable
+2. User Recipe Back End and Front End Draft - 90% Done
+	- Proper draft for user_recipe_single.html
+		- Include 5 latest user posted recipe below the recipe picture
+	- Proper draft for sidebar top 5 user recipe
+3. User Profile Back End and Front End Draft
+4. 404 Page and link to all views
+5. HTML and CSS beautification for all function with bootstrap and responsive mobile testing 
+5. Function Testing 
+
 	
+MINOR
+1. Update restaurant model to include "price" IntegerField
+2. Update html css for welcome guest  
+3. Update views for recipe_all, restaurant_all, etc to really show the latest created post, not the inverse
+4. Update recipe model to include thumbnail for youtube video. replace the current index and recipe_all display
+   to picture thumbnail instead of youtube link
+5. Build sidebar html for youtube and facebook link and find way to build the same function into mobile
 
-temperory 
-youtube link = <iframe width="560" height="315" src="https://www.youtube.com/embed/zLkw-TZUCCk?list=PL41Z3fskCG1L1bwtiStNkMn37Lrp_SbZ6" frameborder="0" allowfullscreen></iframe>
 
-Notes next to do 
--  Need to define/program what if user does not upload picture (default pic?)
--  Update HTML for "welcome User" preferably use bootstrap
--  Need to prepare account management page for users to update their profile
--  Need to set unique email required for registration and set email as required login criteria instead of username
--  Check the order or recipe, articles and restaurants to follow our the latest created date first (possibly inverse now)
--  Change youtube presentation to thumbnail only to speed up loading processs
+NOTES

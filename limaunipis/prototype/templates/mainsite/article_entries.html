@@ -12,7 +12,8 @@
         <div class="col-md-6 col-sm-6 col-xs-6">
             <div class="content_text">
                 <h4><a href="{% url 'limau:article_single' slug=item.slug  %}">{{ item.title_bm }}</a></h4>
-                <content class="hidden-xs">{{ item.text_bm | truncatechars:300 | safe }}</content>
+                <content class="hidden-xs">{{ item.text_bm | truncatechars:300 | safe }}</content></br>
+                <a href="{% url 'limau:article_single' slug=item.slug %}" class="btn btn-success" role="button">Read More</a>
             </div>
         </div>
     </div><hr class="style17">

@@ -4,12 +4,21 @@
 {% block body_block %}
 
 <div class="row contentgroup">
+    <div class="col-md-5">
+        <img src="{{ user_recipe.picture_1.url }}" style="width:100%">  
+    </div>
+    <div class="col-md-7">
+        <h3> {{ user_recipe.name_bm }} </h3></br>
+        <span class="article_text">{{ user_recipe.content | safe }}</span> 
+    </div>
+</div></br>
+
+
+
+<div class="row contentgroup">
     <div class="col-md-12 col-sm-12 col-xs-12">
-        <h3>{{ user_recipe.name_bm }}</h3>
-        <p>{{ user_recipe.content | safe }}</p>
-        <p> created date : {{ user_recipe.created_date }}</p>
         {% if request.user == user_recipe.user %}
-        <a class="btn btn-default" href="{% url 'limau:user_recipe_edit' pk=user_recipe.pk %}" ><span class="glyphicon glyphicon-pencil"></span></a>
+        <a class="btn btn-default" href="{% url 'limau:user_recipe_edit' pk=user_recipe.pk %}" ><span class="glyphicon glyphicon-pencil"> EDIT1 </span></a>
         {% endif %}
     </div>
 </div>

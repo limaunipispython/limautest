@@ -1,30 +1,7 @@
-COMPLETE USER RECIPE MODEL
-
-Objective
-- to create user field in models.py
-    - code : user = models.ForeignKey('auth.User') - done
-- create UserRecipe form in forms.py to post UserRecipe models instance - done
-- create newRecipePost view to handle new post and submit post instance - done
-- link newRecipePost with url - done
-- create html form to handle newRecipePost - done
-- draft view and html for userRecipeSingle - done
-- create editRecipePost view to handle edit post - done
-- link editRecipePost with url - done
--> in base.html find place to put the link for user to post new_recipe and isolate only from
-  authenticated user - done by : if guest click the 'Post your recipe' button it will direct them to login page
--> create html to display list of user posted recipe and picture
-- optimize user recipe to include ingredients
-
+OBJECTIVE: User Recipe Back End and Front End Draft
 
 How To Do:
-1. put bootstrap html button right below 'welcome guest' notification for desktop - done
-2. link button to user_recipe_post url - done
-3. arrange item in the sidebar to include latest 5 new user recipe
-  - need to be done with django templatetags - done
-  - modify the html to better visualize the sidebar of user recipe - KIV
-4. create code to create copy instance of user recipe to test ajax - done
-5. create html with ajax to display user posted recipe list (user_recipe_all.html ) - done
-6. link USER POSTED RECIPE header in the sidebar to user_recipe_all.html
-7. create link to user_recipe_entries on navbar - for mobile users
-8. read more button for user_recipe_all recipe list
-8. update user_recipe_single.html to be better follow standard -- need to draft the wireframe and update model
+1. user_recipe_single.html
+    - divide by col
+
+
