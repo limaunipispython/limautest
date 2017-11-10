@@ -39,7 +39,7 @@ urlpatterns = [
     url(r'^user_recipe/(?P<slug>[\w\-]+)/$', views.user_recipe_single, name="user_recipe_single"),
     url(r'^user_recipe/(?P<pk>\d+)/edit/$', views.user_recipe_edit, name="user_recipe_edit"),
     url(r'^user_recipe_all/$', views.user_recipe_all, name="user_recipe_all"),
-    
+    url(r'^user_profile/(?P<username>[\w\-]+)/$', views.user_profile, name="user_profile")
 ]
 
 media_url = url(r'media/(?P<path>.*)', static.serve, {'document_root' : settings.MEDIA_ROOT}, name="media_folder")

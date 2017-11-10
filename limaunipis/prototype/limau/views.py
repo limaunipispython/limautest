@@ -9,6 +9,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.core.mail import EmailMessage
+from django.contrib.auth.models import User
 
 
 # Create your views here.
@@ -294,9 +295,20 @@ def user_recipe_edit(request, pk):
     }
     return HttpResponse(template.render(context, request))
 
+# USER PROFILE SECTION
 
+def user_profile(request, username):
+    template = loader.get_template('mainsite/user_profile.html')
+    try:
+        user = User.objects.get(username=username)
+    except User.DoesNotExist:
+        return HttpResponse("error 404")
 
-    
+    context = {
+        'user' : user,
+    }
+    return HttpResponse(template.render(context, request))
+
 
 @login_required
 def user_logout(request):

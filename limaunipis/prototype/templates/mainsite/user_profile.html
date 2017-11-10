@@ -1,0 +1,15 @@
+{% extends 'mainsite/base.html' %}
+{% load staticfiles %}
+
+{% block body_block %}
+<h3>{{ user.username }}</h3></br>
+
+<img src="{{ user.userprofile.picture.url }}" ></br>
+{{ user.userprofile.description }}</br>
+
+<h4>User Posted Recipe</h4>
+{% for recipe in user.userrecipe_set.all %}
+    {{ recipe.name_bm }}</br>
+{% endfor %}
+
+{% endblock %}

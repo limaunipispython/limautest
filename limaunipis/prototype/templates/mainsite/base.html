@@ -101,26 +101,15 @@
 						{% endblock %}
     			</div>
 					<div class="col-md-3 hidden-sm hidden-xs">
-        		<!--<div class="row outer_sidebox">
-							<h5> ANNOUNCEMENT </h5>
-							<div class="inner_sidebox">
-									<p> Limau Nipis website will be live in May 2017!! </p>
+						<div class="row">
+							<div class="alert alert-success">
+							{% if user.is_authenticated %}
+								Welcome {{ user.username }}!
+							{% else %}
+								hey there Guest!
+							{% endif %}
 							</div>
-            </div>
-						<div class=" row outer_sidebox" id="user_recipe">
-							<h5> USER POSTED RECIPES </h5>
-							<div class="inner_sidebox">
-									<div class="col-md-12 test">
-											fuck off
-									</div>
-							</div>
-            </div>      -->
-
-						{% if user.is_authenticated %}
-							Welcome {{ user.username }}!
-						{% else %}
-							hey there Guest!
-						{% endif %}
+						</div>
 <!-- sidebar panel for desktop -->
 						<div class="row">
 							<div class="panel panel-info">
@@ -155,7 +144,7 @@
 												<p>Gulai Ayam Cendawan</p>
 											</div>
 										</div>
-									</div> -->
+									</div> -->		
 									{% get_recent_user_recipe %}
 
 									

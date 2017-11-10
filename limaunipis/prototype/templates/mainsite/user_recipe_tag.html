@@ -1,14 +1,17 @@
 {% if user_recipe %}
 
     {% for recipe in user_recipe %}
-    <div class="panel-body">
-        <div class="clearfix">
-            <div class="col-md-12">
-                {{ recipe.name_bm }}</br>
-                {{ recipe.user }}
-            </div>
-        </div>
-    </div>
+   <div class="panel-body">
+										<div class="clearfix">
+											<div class="col-md-4">
+												<img src="/media/user_picture.png" class="user_pic" style="width:100%">
+											</div>
+											<div class="col-md-8">
+												<a href="#"><name>{{ recipe.user }}<name></a>
+												<p>{{ recipe.name_bm }}</p>
+											</div>
+										</div>
+									</div>
     {% endfor%}
 
 {% else %}

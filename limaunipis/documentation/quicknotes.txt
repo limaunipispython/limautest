@@ -1,7 +1,18 @@
-OBJECTIVE: User Recipe Back End and Front End Draft
+OBJECTIVE: User Profile 
 
-How To Do:
-1. user_recipe_single.html
-    - insert bootstrap panel with 5 latest user posted recipe below the picture 
+MAJOR Task List
+1. Build draft user_profile views (views.py) and call user 
+    - build 'user_profile' html template and link to views
+    - create form to change user profile pictures and description
+    - include if user is authenticated to enable 'edit' and 'link to change password'
+    - map url to open individual profile in urls.py with username as the passable parameters
 
+2. Change the picture in latest user posted recipe to refer to user.userProfile.picture
 
+2. in views.py build views to call list of all users and pass them to context dictionary
+    - include 'all_users' html template
+    - map url to 
+
+3. 
+
+Minor Task List

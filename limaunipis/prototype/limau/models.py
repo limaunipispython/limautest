@@ -166,6 +166,9 @@ class UserProfile(models.Model):
 
     # Additional attributes to be added  
     picture = ProcessedImageField(upload_to="user_picture", processors=[ResizeToFill(180, 180)], format="JPEG", options={'quality':70})
+    description = models.TextField(max_length=300, default="description")
+
+
 
     def __str__(self):
         return self.user.username

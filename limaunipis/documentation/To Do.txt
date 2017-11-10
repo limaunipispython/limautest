@@ -4,11 +4,15 @@ MAJOR
 1. Authentication Back End and Front End Draft - 90% Done
 	- Need to find a way to make email unique, one email can only hold one account
 	- Set email as the required login criteria - currently optional but preferable
-2. User Recipe Back End and Front End Draft - 90% Done
-	- Proper draft for user_recipe_single.html
-		- Include 5 latest user posted recipe below the recipe picture
-	- Proper draft for sidebar top 5 user recipe
+2. User Recipe Back End and Front End Draft - Done
 3. User Profile Back End and Front End Draft
+	- build chef_profile to display all data related to chef like picture, name and related recipe list
+	- in latest user recipe on top of the page put button to 'view all chefs'
+	- if user is authenticated there should be my profile button at navbar to view user own profile and user
+	  should be able to edit his/her own profile. use user recipe form as reference for edit backend 
+	- 'view all chef should list all picture of chef with picture, name and description - preferable 3 users
+	  per col-md-12 row
+	- if user/guest click at chef name it should bring them to user profile
 4. Category views for articles, recipe, restaurant and user_recipe
 4. 404 Page and link to all views
 5. HTML and CSS beautification for all function with bootstrap and responsive mobile testing 
@@ -22,6 +26,6 @@ MINOR
 4. Update recipe model to include thumbnail for youtube video. replace the current index and recipe_all display
    to picture thumbnail instead of youtube link
 5. Build sidebar html for youtube and facebook link and find way to build the same function into mobile
-
+6. after user register, prompt them to update their profile
 
 NOTES
