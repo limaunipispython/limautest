@@ -283,7 +283,7 @@ def user_recipe_edit(request, pk):
             post = form.save(commit = False)
             post.user = request.user
             if 'picture_1' in request.FILES:
-                post.picture_1  = request.FILES['picture_1']
+                post.picture_1 = request.FILES['picture_1']
             if 'picture_2' in request.FILES:
                 post.picture_2 = request.FILES['picture_2']
             post.save()
