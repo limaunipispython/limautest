@@ -22,7 +22,7 @@ class UserProfileForm(forms.ModelForm):
         """Meta definition for UserProfileform."""
 
         model = UserProfile
-        fields = ('picture',)
+        fields = ('picture', 'description')
 
 
 class UserRecipeForm(forms.ModelForm):

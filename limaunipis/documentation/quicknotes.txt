@@ -2,7 +2,7 @@ OBJECTIVE: User Profile
 
 MAJOR Task List
 1. Build draft user_profile views (views.py) and call user 
-    - build 'user_profile' html template and link to views
+    - build 'user_profile' html template and link to views - done
     - create form to change user profile pictures and description
     - include if user is authenticated to enable 'edit' and 'link to change password'
     - map url to open individual profile in urls.py with username as the passable parameters
@@ -16,3 +16,11 @@ MAJOR Task List
 3. 
 
 Minor Task List
+
+
+Brainstorm:
+
+try:
+    user_profile = UserProfile.objects.get(user=request.user)
+except UserProfile.DoesNotExist:
+    return redirect(limau)

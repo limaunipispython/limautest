@@ -309,6 +309,25 @@ def user_profile(request, username):
     }
     return HttpResponse(template.render(context, request))
 
+@login_required
+def user_profile_form(request):
+    template = loader.get_template('forms/user_profile_form.html')
+    if request.method == 'POST':
+        form = UserProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            profile_edit = form.save(commit=False)
+            profile_edit.user = request.user
+            if 'picture' in request.FILES:
+                profile_edit.picture = request.FILES['picture']
+            profile_edit.save()
+            return redirect('limau:user_profile', username=request.user.username)
+    else:
+        form = UserProfileForm()            
+    context = {
+        'form' : form,
+    }
+    return HttpResponse(template.render(context, request))
+
 
 @login_required
 def user_logout(request):
