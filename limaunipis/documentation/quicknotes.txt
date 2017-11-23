@@ -2,25 +2,17 @@ OBJECTIVE: User Profile
 
 MAJOR Task List
 1. Build draft user_profile views (views.py) and call user 
-    - build 'user_profile' html template and link to views - done
-    - create form to change user profile pictures and description
-    - include if user is authenticated to enable 'edit' and 'link to change password'
-    - map url to open individual profile in urls.py with username as the passable parameters
-
+    1. try registration flow process once - done
+    2. default picture into picture field in user_profile - done
 2. Change the picture in latest user posted recipe to refer to user.userProfile.picture
-
-2. in views.py build views to call list of all users and pass them to context dictionary
+3. in views.py build views to call list of all users and pass them to context dictionary - with ajax calls
     - include 'all_users' html template
-    - map url to 
-
-3. 
+    - include view chefs button/link somewhere in the base.html 
 
 Minor Task List
 
 
 Brainstorm:
 
-try:
-    user_profile = UserProfile.objects.get(user=request.user)
-except UserProfile.DoesNotExist:
-    return redirect(limau)
+
+Notes

@@ -1,0 +1,11 @@
+{% extends 'mainsite/base.html' %}
+{% load staticfiles %}
+
+{% block body_block %}
+
+{% for chef in users %}
+    {{ chef.username }}
+
+{% endfor %}
+
+{% endblock %}

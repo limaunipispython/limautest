@@ -303,17 +303,17 @@ def user_profile(request, username):
         user = User.objects.get(username=username)
     except User.DoesNotExist:
         return HttpResponse("error 404")
-
     context = {
-        'user' : user,
+        'userlimau' : user,
     }
     return HttpResponse(template.render(context, request))
 
 @login_required
 def user_profile_form(request):
+    user = User.objects.get(username=request.user.username)
     template = loader.get_template('forms/user_profile_form.html')
     if request.method == 'POST':
-        form = UserProfileForm(request.POST, request.FILES)
+        form = UserProfileForm(request.POST, request.FILES, instance=user.userprofile)
         if form.is_valid():
             profile_edit = form.save(commit=False)
             profile_edit.user = request.user
@@ -322,12 +322,26 @@ def user_profile_form(request):
             profile_edit.save()
             return redirect('limau:user_profile', username=request.user.username)
     else:
-        form = UserProfileForm()            
+        form = UserProfileForm(instance = user.userprofile)            
     context = {
         'form' : form,
     }
     return HttpResponse(template.render(context, request))
 
+def all_users(request):
+    template = loader.get_template('mainsite/all_users.html')
+    try:
+        users = User.objects.all()
+    except User.DoesNotExist:
+        return HttpResponse("error 404")
+    context = {
+        'users' : users,
+    }
+    return HttpResponse(template.render(context, request))
+
+
+
+# MISCELLANEOUS
 
 @login_required
 def user_logout(request):

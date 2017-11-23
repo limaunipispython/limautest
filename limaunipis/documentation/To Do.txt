@@ -6,10 +6,10 @@ MAJOR
 	- Set email as the required login criteria - currently optional but preferable
 2. User Recipe Back End and Front End Draft - Done
 3. User Profile Back End and Front End Draft
-	- build chef_profile to display all data related to chef like picture, name and related recipe list
+	- build chef_profile to display all data related to chef like picture, name and related recipe list - done
 	- in latest user recipe on top of the page put button to 'view all chefs'
 	- if user is authenticated there should be my profile button at navbar to view user own profile and user
-	  should be able to edit his/her own profile. use user recipe form as reference for edit backend 
+	  should be able to edit his/her own profile. use user recipe form as reference for edit backend  - done
 	- 'view all chef should list all picture of chef with picture, name and description - preferable 3 users
 	  per col-md-12 row
 	- if user/guest click at chef name it should bring them to user profile
@@ -29,3 +29,5 @@ MINOR
 6. after user register, prompt them to update their profile
 
 NOTES
+1. Need to give a tag to users. example(bronze chef, silver chef, gold chef)
+2. Need to find a way to tag number of recipes posted for every users in their profile

@@ -5,6 +5,9 @@ from imagekit.models import ImageSpecField, ProcessedImageField
 from imagekit.processors import ResizeToFill
 from limau.choices import * 
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
 # Create your models here.
 
 # Recipe category class like [Malay, Asian, Western]
@@ -162,19 +165,28 @@ class UserRecipe(models.Model):
 # Default User model contains username, password, email, first name, surname
 class UserProfile(models.Model):
     # Link UserProfile to a User model instance
-    user = models.OneToOneField(User)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
 
-    # Additional attributes to be added  
-    picture = ProcessedImageField(upload_to="user_picture", processors=[ResizeToFill(180, 180)], format="JPEG", options={'quality':70})
+    # Additional attributes to be added
+    default_pic = '/media/user_picture/Koala.jpg'  
+    picture = ProcessedImageField(upload_to="user_picture", processors=[ResizeToFill(180, 180)], format="JPEG", options={'quality':70}, null=True, blank=True, default=default_pic)
     description = models.TextField(max_length=300, default="description")
-
-
 
     def __str__(self):
         return self.user.username
 
+# Below is the code to auto create user profile when they register
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        UserProfile.objects.create(user=instance)
+
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+    instance.userprofile.save()
 
 
+    
 
 
 

@@ -2,14 +2,20 @@
 {% load staticfiles %}
 
 {% block body_block %}
-<h3>{{ user.username }}</h3></br>
+<h3>{{ userlimau.username }}</h3></br>
 
-<img src="{{ user.userprofile.picture.url }}" ></br>
-{{ user.userprofile.description }}</br>
+<img src="{{ userlimau.userprofile.picture.url }}" ></br>
+{{ userlimau.userprofile.description }}</br>
+
+{% if request.user == userlimau %}
+<a class="btn btn-default" href="{% url 'limau:user_profile_form'  %}" ><span class="glyphicon glyphicon-pencil"> EDIT </span></a>
+{% endif %}</br>
+
 
 <h4>User Posted Recipe</h4>
-{% for recipe in user.userrecipe_set.all %}
+{% for recipe in userlimau.userrecipe_set.all %}
     {{ recipe.name_bm }}</br>
 {% endfor %}
 
 {% endblock %}
+
