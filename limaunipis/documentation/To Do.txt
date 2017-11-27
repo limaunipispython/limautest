@@ -27,6 +27,8 @@ MINOR
    to picture thumbnail instead of youtube link
 5. Build sidebar html for youtube and facebook link and find way to build the same function into mobile
 6. after user register, prompt them to update their profile
+7. insert description for footer button to explain what is the purpose of the button
+8. for all_users view - include top 5 users with most post
 
 NOTES
 1. Need to give a tag to users. example(bronze chef, silver chef, gold chef)

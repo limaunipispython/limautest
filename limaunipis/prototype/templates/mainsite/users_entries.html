@@ -1,0 +1,13 @@
+{% load el_pagination_tags %}
+{% paginate users  %}
+
+{% for chef in users %}
+
+{{ chef.username }}
+<img src="{{ chef.userprofile.picture.url }}" class="img-circle"></br>
+
+
+
+{% endfor %}
+
+{% show_more %}

@@ -2,10 +2,17 @@
 {% load staticfiles %}
 
 {% block body_block %}
+<h2>This section reserved for top 3 chefs with most posted recipe</h2>
 
-{% for chef in users %}
-    {{ chef.username }}
+{% include page_template %}
 
-{% endfor %}
+{% block js %}
+    {{ block.super }}
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+
+    <script src="/static/el-pagination/js/el-pagination.js"></script>
+    <script>$.endlessPaginate({paginateOnScroll: true});</script>
+{% endblock %}
+
 
 {% endblock %}

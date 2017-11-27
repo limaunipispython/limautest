@@ -330,13 +330,25 @@ def user_profile_form(request):
 
 def all_users(request):
     template = loader.get_template('mainsite/all_users.html')
+    page_template = loader.get_template('mainsite/users_entries.html')
     try:
-        users = User.objects.all()
+        nonfiltered_users = User.objects.order_by("-userrecipe__created_date")
+        filtered_users = []
+        for user in nonfiltered_users:
+            if user not in filtered_users:
+                filtered_users.append(user)
+        users = filtered_users
+
     except User.DoesNotExist:
         return HttpResponse("error 404")
     context = {
         'users' : users,
+        'page_template' : page_template,
     }
+    
+    if request.is_ajax():
+        template = page_template
+
     return HttpResponse(template.render(context, request))
 
 
