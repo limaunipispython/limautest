@@ -2,7 +2,25 @@
 {% load staticfiles %}
 
 {% block body_block %}
-<h2>This section reserved for top 3 chefs with most posted recipe</h2>
+
+<h2 style="text-align: center;"> Limau Nipis Hall Of Fame</h2>
+<div class="row contentgroup">
+    {% for chef in topusers %}
+    <div class="col-md-3 col-sm-6 col-xs-6">
+        <div class="thumbnail">
+            <a href="{% url 'limau:user_profile' username=chef.username %}">
+                <img src="{{ chef.userprofile.picture.url }}">
+                <div class="caption">
+                    <h3 style="text-align: center;">{{ chef.username }}</h3>
+                    <p style="text-align: center;"> Total Post Count : {{ chef.postCount }}</p>
+                    <p style="text-align: center;">{{ chef.userprofile.description }}</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    {% endfor %}
+</div><hr class="style17">
+<h2 style="text-align: center;">All Chefs</h2>
 
 {% include page_template %}
 

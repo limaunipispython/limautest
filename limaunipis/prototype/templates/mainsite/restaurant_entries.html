@@ -6,6 +6,7 @@
     <div class="row contentgroup">
         <div class="col-md-12 col-sm-12 col-xs-12 restaurant_title">
             <h4><a href="{% url 'limau:restaurant_single' slug=item.slug %}">Limau Review : {{ item.name_bm }} </a></h4>
+            <p> Post date : {{ item.created_date }}</p>
         </div>
         <div class="col-md-4 col-sm-4 col-xs-6">
             <div class="restaurant_pic">

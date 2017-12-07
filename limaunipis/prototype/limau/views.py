@@ -4,13 +4,14 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from limau.models import Recipe, Article, Restaurant, UserRecipe
+from limau.models import RecipeCategory, ArticleCategory, RestaurantCategory
 from limau.forms import UserForm, UserProfileForm, UserRecipeForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.core.mail import EmailMessage
 from django.contrib.auth.models import User
-
+from django.db.models import Count
 
 # Create your views here.
 def index(request):
@@ -37,13 +38,36 @@ def recipe_all(request):
     page_template = loader.get_template('mainsite/recipe_entries.html')
     try:
         recipes = Recipe.objects.all().order_by('-created_date')
+        recipes_cat = RecipeCategory.objects.all()
     except Recipe.DoesNotExist:
         return HttpResponse("Error 404")
 
     context = {
         'recipes' : recipes,
         'page_template' : page_template,
-        'nbar' : "recipes"
+        'nbar' : "recipes",
+        'recipes_cat': recipes_cat,
+    }
+
+    if request.is_ajax():
+        template = page_template
+    return HttpResponse(template.render(context, request))
+
+def recipe_category(request, slug):
+    template = loader.get_template('mainsite/recipe_all.html')
+    page_template = loader.get_template('mainsite/recipe_entries.html')
+    try:
+        category = RecipeCategory.objects.get(slug=slug)
+        recipes = Recipe.objects.filter(recipecategory=category).order_by('-created_date')
+        recipes_cat = RecipeCategory.objects.all()
+    except RecipeCategory.DoesNotExist:
+        return HttpResponse("Error 404")
+
+    context = {
+        'recipes' : recipes,
+        'page_template' : page_template,
+        'nbar' : "recipes",
+        'recipes_cat': recipes_cat,
     }
 
     if request.is_ajax():
@@ -55,25 +79,48 @@ def user_recipe_all(request):
     page_template = loader.get_template('mainsite/user_recipe_entries.html')
     try:
         recipes = UserRecipe.objects.all().order_by('-created_date')
+        user_recipe_cat = RecipeCategory.objects.all()
     except Recipe.DoesNotExist:
         return HttpResponse("Error 404")
 
     context = {
         'recipes' : recipes,
         'page_template' : page_template,
-        'nbar' : "recipes"
+        'nbar' : "recipes",
+        'user_recipe_cat' : user_recipe_cat,
     }
 
     if request.is_ajax():
         template = page_template
     return HttpResponse(template.render(context, request))
 
+def user_recipe_category(request, slug):
+    template = loader.get_template('mainsite/user_recipe_all.html')
+    page_template = loader.get_template('mainsite/user_recipe_entries.html')
+    try:
+        category = RecipeCategory.objects.get(slug=slug)
+        recipes = UserRecipe.objects.filter(recipecategory=category).order_by('-created_date')
+        user_recipe_cat = RecipeCategory.objects.all()
+    except Recipe.DoesNotExist:
+        return HttpResponse("Error 404")
+
+    context = {
+        'recipes' : recipes,
+        'page_template' : page_template,
+        'nbar' : "recipes",
+        'user_recipe_cat' : user_recipe_cat,
+    }
+
+    if request.is_ajax():
+        template = page_template
+    return HttpResponse(template.render(context, request))
 
 def article_all(request):
     template = loader.get_template('mainsite/article_all.html')
     page_template = loader.get_template('mainsite/article_entries.html')
     try:
         articles = Article.objects.all().order_by('-created_date')
+        articles_cat = ArticleCategory.objects.all()
     except Article.DoesNotExist:
         return HttpResponse("error 404")
 
@@ -81,6 +128,29 @@ def article_all(request):
         'articles' : articles,
         'page_template' : page_template,
         'nbar' : "articles",
+        'articles_cat' : articles_cat,
+    }
+
+    if request.is_ajax():
+        template = page_template
+
+    return HttpResponse(template.render(context, request))
+
+def article_category(request, slug):
+    template = loader.get_template('mainsite/article_all.html')
+    page_template = loader.get_template('mainsite/article_entries.html')
+    try:
+        category = ArticleCategory.objects.get(slug=slug)
+        articles = Article.objects.filter(articlecategory=category).order_by('-created_date')
+        articles_cat = ArticleCategory.objects.all()
+    except ArticleCategory.DoesNotExist:
+        return HttpResponse("error 404")
+
+    context = {
+        'articles' : articles,
+        'page_template' : page_template,
+        'nbar' : "articles",
+        'articles_cat' : articles_cat,
     }
 
     if request.is_ajax():
@@ -93,12 +163,34 @@ def restaurant_all(request):
     page_template = loader.get_template('mainsite/restaurant_entries.html')
     try:
         restaurants = Restaurant.objects.all().order_by('-created_date')
+        restaurants_cat = RestaurantCategory.objects.all() 
     except Restaurant.DoesNotExist:
         return HttpResponse("error 404")
     context = {
         'restaurants' : restaurants,
         'page_template' : page_template,
         'nbar' : "restaurants",
+        'restaurants_cat' : restaurants_cat,
+    }
+
+    if request.is_ajax():
+        template = page_template
+    return HttpResponse(template.render(context, request))
+
+def restaurant_category(request, slug):
+    template = loader.get_template('mainsite/restaurant_all.html')
+    page_template = loader.get_template('mainsite/restaurant_entries.html')
+    try:
+        category = RestaurantCategory.objects.get(slug=slug)
+        restaurants = Restaurant.objects.filter(restaurantcategory=category).order_by('-created_date')
+        restaurants_cat = RestaurantCategory.objects.all() 
+    except Restaurant.DoesNotExist:
+        return HttpResponse("error 404")
+    context = {
+        'restaurants' : restaurants,
+        'page_template' : page_template,
+        'nbar' : "restaurants",
+        'restaurants_cat' : restaurants_cat,
     }
 
     if request.is_ajax():
@@ -338,12 +430,15 @@ def all_users(request):
             if user not in filtered_users:
                 filtered_users.append(user)
         users = filtered_users
+        topU = User.objects.all().annotate(postCount = Count('userrecipe'))
+        topUsers = topU.order_by('-postCount')[:4]
 
     except User.DoesNotExist:
         return HttpResponse("error 404")
     context = {
         'users' : users,
         'page_template' : page_template,
+        'topusers' : topUsers,
     }
     
     if request.is_ajax():

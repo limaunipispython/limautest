@@ -12,6 +12,7 @@
     <div class="col-md-6 col-sm-6 col-xs-6">
         <div class="content_text">
             <h4><a href="{% url 'limau:user_recipe_single' slug=item.slug  %}">{{ item.name_bm }}</a></h4>
+            <p>Post date : {{ item.created_date }}</p>
             <content class="hidden-xs">{{ item.description | truncatechars:300 | safe }}</content></br>
             <a href="{% url 'limau:user_recipe_single' slug=item.slug %}" class="btn btn-success" role="button">Read More</a>
         </div>

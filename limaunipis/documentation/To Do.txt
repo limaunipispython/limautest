@@ -11,12 +11,14 @@ MAJOR
 	- if user is authenticated there should be my profile button at navbar to view user own profile and user
 	  should be able to edit his/her own profile. use user recipe form as reference for edit backend  - done
 	- 'view all chef should list all picture of chef with picture, name and description - preferable 3 users
-	  per col-md-12 row
-	- if user/guest click at chef name it should bring them to user profile
-4. Category views for articles, recipe, restaurant and user_recipe
+	  per col-md-12 row - done
+	- if user/guest click at chef name it should bring them to user profile - done
+	- beautify user_profile page html css - done
+4.  search form and category views for articles, recipe, restaurant and user_recipe
 4. 404 Page and link to all views
 5. HTML and CSS beautification for all function with bootstrap and responsive mobile testing 
 5. Function Testing 
+7. Ingredient page and link to recipe
 
 	
 MINOR
@@ -29,6 +31,10 @@ MINOR
 6. after user register, prompt them to update their profile
 7. insert description for footer button to explain what is the purpose of the button
 8. for all_users view - include top 5 users with most post
+9. include min_length and max_length in the modelform for userprofile to make sure thumbnail size is standardized
+10. if user submitted the same recipe name it would raise exception(need to check type of exception). the post with the exception
+   still saved in the database
+
 
 NOTES
 1. Need to give a tag to users. example(bronze chef, silver chef, gold chef)

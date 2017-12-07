@@ -79,7 +79,7 @@ class Recipe(models.Model):
     slug = models.SlugField(default='will-be-generated-once-save')
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.name_en)
+        self.slug = slugify(self.name_en)#should be name_bm
         super(Recipe, self).save(*args, **kwargs)
 
     def __str__(self):

@@ -2,20 +2,33 @@
 {% load staticfiles %}
 
 {% block body_block %}
-<h3>{{ userlimau.username }}</h3></br>
+<div class="row contentgroup">
+    <div class="col-md-3 col-sm-12 col-xs-12">
+        <div class="thumbnail">
+            <a href="#">
+                <img src="{{ userlimau.userprofile.picture.url }}" ></br>     
+                <div class="caption">
+                        <h3 style="text-align: center;">{{ userlimau.username }}</h3>
+                        <p style="text-align: center;">{{ userlimau.userprofile.description }}</p>
+                </div>
+            </a>
+        </div>
+        {% if request.user == userlimau %}
+        <a class="btn btn-default" href="{% url 'limau:user_profile_form'  %}" ><span class="glyphicon glyphicon-pencil"> EDIT </span></a>
+        {% endif %}</br>
+    </div>
+    <div class="col-md-9 col-sm-12 col-xs-12">
+        <h3 style="text-align: center;"> User Posted Recipes </h3>
+        {% for recipe in userlimau.userrecipe_set.all %}
+        <div class="col-md-4 col-sm-12 col-xs-12">
+            <div class="thumbnail">
+                <img src="{{ recipe.picture_1.url}}">
+                <h4 style="text-align: center;">{{ recipe.name_bm }}</h4>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 
-<img src="{{ userlimau.userprofile.picture.url }}" ></br>
-{{ userlimau.userprofile.description }}</br>
-
-{% if request.user == userlimau %}
-<a class="btn btn-default" href="{% url 'limau:user_profile_form'  %}" ><span class="glyphicon glyphicon-pencil"> EDIT </span></a>
-{% endif %}</br>
-
-
-<h4>User Posted Recipe</h4>
-{% for recipe in userlimau.userrecipe_set.all %}
-    {{ recipe.name_bm }}</br>
-{% endfor %}
 
 {% endblock %}
-

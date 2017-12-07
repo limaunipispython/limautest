@@ -2,6 +2,19 @@
 {% load staticfiles %}
 
 {% block body_block %}
+<div class="row contentgroup">
+    <div class="col-md-3 col-sm-6 col-xs-6">
+        <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Recipe Category
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+                {% for category in recipes_cat %}
+                    <li><a href="{% url 'limau:recipe_category' slug=category.slug %}">{{ category.name_en }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>  
+    </div>    
+</div>
 
 {% include page_template %}
 
