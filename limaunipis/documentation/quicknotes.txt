@@ -1,17 +1,11 @@
-OBJECTIVE: User Profile 
+OBJECTIVE: 5. HTML and CSS beautification for all function with bootstrap and responsive mobile testing 
 
 MAJOR Task List
-1. Build category dropdown on top of :
-    1. recipes - done
-    2. articles - done
-    3. restaurant - done
-    4. user recipes 
-Minor Task List
-urls.py userrecipe
+1. beautify all forms with bootstrap
+
+MINOR Task List
+
 
 Brainstorm:
-
-
-
 
 Notes

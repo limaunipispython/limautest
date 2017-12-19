@@ -1,7 +1,7 @@
 from operator import attrgetter
 from itertools import chain
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.template import loader
 from limau.models import Recipe, Article, Restaurant, UserRecipe
 from limau.models import RecipeCategory, ArticleCategory, RestaurantCategory
@@ -23,7 +23,7 @@ def index(request):
         restaurants = Restaurant.objects.all()
         content_list = sorted(chain(recipes, articles, restaurants), key=attrgetter('created_date'), reverse=True)
     except (Recipe.DoesNotExist, Article.DoesNotExist, Restaurant.DoesNotExist):
-        return HttpResponse("Error 404")
+        raise Http404("Post Does Not Exist")
     context = {
         'content_list' : content_list,
         'page_template' : page_template,
@@ -40,7 +40,7 @@ def recipe_all(request):
         recipes = Recipe.objects.all().order_by('-created_date')
         recipes_cat = RecipeCategory.objects.all()
     except Recipe.DoesNotExist:
-        return HttpResponse("Error 404")
+        raise Http404("Error 404")
 
     context = {
         'recipes' : recipes,
@@ -61,7 +61,7 @@ def recipe_category(request, slug):
         recipes = Recipe.objects.filter(recipecategory=category).order_by('-created_date')
         recipes_cat = RecipeCategory.objects.all()
     except RecipeCategory.DoesNotExist:
-        return HttpResponse("Error 404")
+        raise Http404("Error 404")
 
     context = {
         'recipes' : recipes,
@@ -81,7 +81,7 @@ def user_recipe_all(request):
         recipes = UserRecipe.objects.all().order_by('-created_date')
         user_recipe_cat = RecipeCategory.objects.all()
     except Recipe.DoesNotExist:
-        return HttpResponse("Error 404")
+        raise Http404("Error 404")
 
     context = {
         'recipes' : recipes,
@@ -102,7 +102,7 @@ def user_recipe_category(request, slug):
         recipes = UserRecipe.objects.filter(recipecategory=category).order_by('-created_date')
         user_recipe_cat = RecipeCategory.objects.all()
     except Recipe.DoesNotExist:
-        return HttpResponse("Error 404")
+        raise Http404("Error 404")
 
     context = {
         'recipes' : recipes,
@@ -122,7 +122,7 @@ def article_all(request):
         articles = Article.objects.all().order_by('-created_date')
         articles_cat = ArticleCategory.objects.all()
     except Article.DoesNotExist:
-        return HttpResponse("error 404")
+        raise Http404("Error 404")
 
     context = {
         'articles' : articles,
@@ -144,7 +144,7 @@ def article_category(request, slug):
         articles = Article.objects.filter(articlecategory=category).order_by('-created_date')
         articles_cat = ArticleCategory.objects.all()
     except ArticleCategory.DoesNotExist:
-        return HttpResponse("error 404")
+        raise Http404("Error 404")
 
     context = {
         'articles' : articles,
@@ -165,7 +165,7 @@ def restaurant_all(request):
         restaurants = Restaurant.objects.all().order_by('-created_date')
         restaurants_cat = RestaurantCategory.objects.all() 
     except Restaurant.DoesNotExist:
-        return HttpResponse("error 404")
+        raise Http404("Error 404")
     context = {
         'restaurants' : restaurants,
         'page_template' : page_template,
@@ -185,7 +185,7 @@ def restaurant_category(request, slug):
         restaurants = Restaurant.objects.filter(restaurantcategory=category).order_by('-created_date')
         restaurants_cat = RestaurantCategory.objects.all() 
     except Restaurant.DoesNotExist:
-        return HttpResponse("error 404")
+        raise Http404("Error 404")
     context = {
         'restaurants' : restaurants,
         'page_template' : page_template,
@@ -202,7 +202,7 @@ def recipe_single(request, slug):
     try:
         recipe = Recipe.objects.get(slug=slug)
     except Recipe.DoesNotExist:
-        return HttpResponse("error 404")
+        raise Http404("Error 404")
     context = {
         'recipe' : recipe,
         'nbar' : "recipes",
@@ -214,7 +214,7 @@ def restaurant_single(request, slug):
     try:
         restaurant = Restaurant.objects.get(slug=slug)
     except Restaurant.DoesNotExist:
-        return HttpResponse("error 404")
+        raise Http404("Error 404")
     context = {
         'restaurant': restaurant,
         'nbar': "restaurants",
@@ -226,8 +226,8 @@ def article_single(request, slug):
     try:
         article = Article.objects.get(slug=slug)
         recent_articles = Article.objects.all().order_by('-created_date')[:5]
-    except article.DoesNotExist:
-        return HttpResponse("error 404")
+    except Article.DoesNotExist:
+        raise Http404("Error 404")
     context = {
         'recent_articles' : recent_articles,
         'article' : article,
@@ -248,7 +248,7 @@ def testpage_model(request):
         restaurants = Restaurant.objects.all()
         content_list = sorted(chain(recipes, articles, restaurants), key=attrgetter('created_date'))
     except (Recipe.DoesNotExist, Article.DoesNotExist, Restaurant.DoesNotExist):
-        return HttpResponse("Error 404")
+        raise Http404("Error 404")
 
     context = {
         'content_list' : content_list,
@@ -358,7 +358,7 @@ def user_recipe_single(request, slug):
         user_recipe = UserRecipe.objects.get(slug=slug)
         latest_recipe = UserRecipe.objects.filter(user=user_recipe.user).order_by('-created_date')[:5]
     except UserRecipe.DoesNotExist:
-        return HttpResponse("error 404")
+        raise Http404("error 404")
     context = {
         'user_recipe' : user_recipe,
         'latest_recipe': latest_recipe,
@@ -394,7 +394,7 @@ def user_profile(request, username):
     try:
         user = User.objects.get(username=username)
     except User.DoesNotExist:
-        return HttpResponse("error 404")
+        raise Http404("Error 404")
     context = {
         'userlimau' : user,
     }
@@ -434,7 +434,7 @@ def all_users(request):
         topUsers = topU.order_by('-postCount')[:4]
 
     except User.DoesNotExist:
-        return HttpResponse("error 404")
+        raise Http404("Error 404")
     context = {
         'users' : users,
         'page_template' : page_template,

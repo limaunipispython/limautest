@@ -5,16 +5,8 @@ MAJOR
 	- Need to find a way to make email unique, one email can only hold one account
 	- Set email as the required login criteria - currently optional but preferable
 2. User Recipe Back End and Front End Draft - Done
-3. User Profile Back End and Front End Draft
-	- build chef_profile to display all data related to chef like picture, name and related recipe list - done
-	- in latest user recipe on top of the page put button to 'view all chefs'
-	- if user is authenticated there should be my profile button at navbar to view user own profile and user
-	  should be able to edit his/her own profile. use user recipe form as reference for edit backend  - done
-	- 'view all chef should list all picture of chef with picture, name and description - preferable 3 users
-	  per col-md-12 row - done
-	- if user/guest click at chef name it should bring them to user profile - done
-	- beautify user_profile page html css - done
-4.  search form and category views for articles, recipe, restaurant and user_recipe
+3. User Profile Back End and Front End Draft - Done
+4. Search form and category views for articles, recipe, restaurant and user_recipe - Partially done, Search form final phase
 4. 404 Page and link to all views
 5. HTML and CSS beautification for all function with bootstrap and responsive mobile testing 
 5. Function Testing 
@@ -24,13 +16,13 @@ MAJOR
 MINOR
 1. Update restaurant model to include "price" IntegerField
 2. Update html css for welcome guest  
-3. Update views for recipe_all, restaurant_all, etc to really show the latest created post, not the inverse
+3. Update views for recipe_all, restaurant_all, etc to really show the latest created post, not the inverse - done
 4. Update recipe model to include thumbnail for youtube video. replace the current index and recipe_all display
-   to picture thumbnail instead of youtube link
+   to picture thumbnail instead of youtube link - KIV
 5. Build sidebar html for youtube and facebook link and find way to build the same function into mobile
 6. after user register, prompt them to update their profile
 7. insert description for footer button to explain what is the purpose of the button
-8. for all_users view - include top 5 users with most post
+8. for all_users view - include top 4 users with most post - done
 9. include min_length and max_length in the modelform for userprofile to make sure thumbnail size is standardized
 10. if user submitted the same recipe name it would raise exception(need to check type of exception). the post with the exception
    still saved in the database

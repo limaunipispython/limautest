@@ -19,6 +19,7 @@ from django.contrib import admin
 from django.conf import settings
 from django.views import static
 from limau import views
+import django.views.defaults
 
 app_name = 'limau'
 urlpatterns = [
@@ -50,5 +51,9 @@ urlpatterns = [
 
 media_url = url(r'media/(?P<path>.*)', static.serve, {'document_root' : settings.MEDIA_ROOT}, name="media_folder")
 
+#testing Http404 url for Debug=True 
+url_404 = url(r'^404/$', django.views.defaults.page_not_found, )
+
 if settings.DEBUG:
     urlpatterns.append(media_url)
+    #urlpatterns.append(url_404)

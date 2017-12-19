@@ -26,7 +26,7 @@ SECRET_KEY = 'l7!@4t=(^t4r7+s4^1_xacgap1ruys05maajfiqir$nnzwev(j'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
+ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com', 'localhost']
 
 
 # Application definition
@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'imagekit',
     'el_pagination',
     'registration',
+    'bootstrap_toolkit',
+    'bootstrap3',
 
 
 ]
