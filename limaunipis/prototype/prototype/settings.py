@@ -149,7 +149,7 @@ ACCOUNT_ACTIVATION_DAYS = 7
 # If True, the user will be automatically logged in.
 REGISTRATION_AUTO_LOGIN = False
 # The page you want users to arrive at after they successfully log in
-LOGIN_REDIRECT_URL = '/recipe_all/'
+LOGIN_REDIRECT_URL = '/home/'
 
 
 # email settings

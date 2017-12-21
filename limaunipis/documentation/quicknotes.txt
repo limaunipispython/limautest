@@ -1,7 +1,8 @@
 OBJECTIVE: 5. HTML and CSS beautification for all function with bootstrap and responsive mobile testing 
 
 MAJOR Task List
-1. beautify all forms with bootstrap
+- forgot password link at login
+- change password link at edit user profile
 
 MINOR Task List
 

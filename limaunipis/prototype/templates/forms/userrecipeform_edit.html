@@ -1,14 +1,15 @@
 {% extends 'mainsite/base.html' %}
 {% load staticfiles %}
+{% load bootstrap3 %}
 
 {% block body_block %}
-<h3>user recipe form</h3>
-
+<div class="col-md-6 col-md-12 col-xs-12">
 <form id="form" method="post" class="post-form"  enctype="multipart/form-data">
+    <h2 class="form-signin-heading">Edit Your Recipe</h2>
     {% csrf_token %}
-    {{ form.as_p }}
+    {% bootstrap_form form %}
     <button type="submit" class="save btn btn-default">Save</button>
 
 </form>
-
+</div>
 {% endblock %}

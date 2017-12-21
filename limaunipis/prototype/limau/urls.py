@@ -24,6 +24,7 @@ import django.views.defaults
 app_name = 'limau'
 urlpatterns = [
     url(r'^$', views.index, name='index'),
+    url(r'^home/$', views.index, name='index'),
     url(r'^recipe_all/$', views.recipe_all, name="recipe_all"),
     url(r'^recipes_category/(?P<slug>[\w\-]+)/$', views.recipe_category, name="recipe_category"),
     url(r'^article_all/$', views.article_all, name="article_all"),

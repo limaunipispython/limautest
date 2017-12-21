@@ -3,6 +3,10 @@
 
 {% block body_block %}
 
-<p> Activation is complete </p>
-
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="alert alert-success">
+        <h4> ACTIVATION COMPLETE </h4>
+        <p> Please login and update your profile through this link : <a href="{% url 'limau:user_profile_form' %}">UPDATE YOUR PROFILE</a></p>
+    </div>
+</div>
 {% endblock %}

@@ -10,7 +10,11 @@
         {% bootstrap_form form %}
         <button class="btn btn-primary" type="submit" name="submit">Login</button>
         <input type="hidden" name="next" value="{{ next }}" />
-    </form>
+    </form></br>
+    <p>
+        Forgot your password?
+        <a href="{% url 'auth_password_reset' %}">Reset Password</a>
+    </p>
     <p>
         Not a member?
         <a href="{% url 'registration_register' %}">Register</a>
