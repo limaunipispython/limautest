@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.template import loader
 from limau.models import Recipe, Article, Restaurant, UserRecipe
-from limau.models import RecipeCategory, ArticleCategory, RestaurantCategory
+from limau.models import RecipeCategory, ArticleCategory, RestaurantCategory, MobileBanner
 from limau.forms import UserForm, UserProfileForm, UserRecipeForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -22,6 +22,7 @@ def index(request):
         articles = Article.objects.all()
         restaurants = Restaurant.objects.all()
         content_list = sorted(chain(recipes, articles, restaurants), key=attrgetter('created_date'), reverse=True)
+        banner = MobileBanner.objects.all()
     except (Recipe.DoesNotExist, Article.DoesNotExist, Restaurant.DoesNotExist):
         raise Http404("Post Does Not Exist")
     context = {

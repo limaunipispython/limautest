@@ -89,7 +89,7 @@ class Article(models.Model):
     articlecategory = models.ManyToManyField(ArticleCategory)
     title_bm = models.CharField(max_length=200)
     created_date = models.DateTimeField(default=timezone.now)
-    thumbnail = ProcessedImageField(upload_to='article_thumbnail', processors=[ResizeToFill(320,180)], format="JPEG", options={'quality':70})
+    thumbnail = ProcessedImageField(upload_to='article_thumbnail', processors=[ResizeToFill(320,130)], format="JPEG", options={'quality':70})
     text_bm = models.TextField()
     slug = models.SlugField(default='will-be-generated-once-save')
 
@@ -144,8 +144,8 @@ class UserRecipe(models.Model):
     # pending user field to identify who submit the recipe
     user = models.ForeignKey('auth.User')
     recipecategory = models.ForeignKey(RecipeCategory)
-    name_bm = models.CharField(max_length=128)
-    name_en = models.CharField(max_length=128)
+    name_bm = models.CharField(max_length=128, unique=True)
+    name_en = models.CharField(max_length=128, unique=True)
     description = models.TextField(max_length=300) #this one should be a textfield 
     content = models.TextField()
     picture_1 = ProcessedImageField(upload_to='user_recipe_thumbnail', processors=[ResizeToFill(320,180)], format="JPEG", options={'quality':70})
@@ -184,6 +184,17 @@ def create_user_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     instance.userprofile.save()
+
+
+class MobileBanner(models.Model):
+    name = models.CharField(max_length=100, default="description")
+    image = ProcessedImageField(upload_to="mobilebanner", processors=[ResizeToFill(360, 360)], format="JPEG", options={'quality':70}, null=True, blank=True)
+    status = models.IntegerField(choices=RATING_CHOICES, default=2)
+
+    def __str__(self):
+        return self.name
+
+
 
 
     

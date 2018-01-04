@@ -31,3 +31,10 @@ class UserRecipeForm(forms.ModelForm):
     class Meta: 
         model = UserRecipe
         fields = ('recipecategory', 'name_bm', 'name_en', 'description', 'content', 'picture_1', 'picture_2')
+        labels = {
+            "name_bm" : "Nama Resepi Bahasa Melayu",
+            "name_en" : "Recipe Name in English",
+        }
+        help_texts = {
+            "name_bm" : "If you want to submit generic recipe like 'NASI LEMAK' which other users might have posted, please add some text to your recipe name like 'NASI LEMAK CHEF HIDAYAH' to differentiate the recipe name in our database. its also required to avoid you submitting 2 recipes with the same name.",
+        }
