@@ -188,8 +188,9 @@ def save_user_profile(sender, instance, **kwargs):
 
 class MobileBanner(models.Model):
     name = models.CharField(max_length=100, default="description")
-    image = ProcessedImageField(upload_to="mobilebanner", processors=[ResizeToFill(360, 360)], format="JPEG", options={'quality':70}, null=True, blank=True)
-    status = models.IntegerField(choices=RATING_CHOICES, default=2)
+    image = ProcessedImageField(upload_to="mobilebanner", processors=[ResizeToFill(360, 360)], format="PNG", options={'quality':70}, null=True, blank=True)
+    status = models.IntegerField(choices=ACTIVE_CHOICES, default=2)
+    image_url = models.URLField(default="www.google.com")
 
     def __str__(self):
         return self.name

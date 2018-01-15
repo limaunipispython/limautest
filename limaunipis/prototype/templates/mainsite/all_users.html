@@ -2,38 +2,40 @@
 {% load staticfiles %}
 
 {% block body_block %}
-
-<h2 style="text-align: center;"> Limau Nipis Hall Of Fame</h2>
-<div class="row contentgroup">
+    <h2 id="hof_header">Hall Of Fame</h2></br>
     {% for chef in topusers %}
-    <div class="col-md-3 hidden-sm hidden-xs">
-        <div class="well">
-            <a href="{% url 'limau:user_profile' username=chef.username %}">
-                <img src="{{ chef.userprofile.picture.url }}" class="img img-responsive img-circle">
-            </a>    
-            <div id="hof_info">
-                <h3 style="text-align: center;">{{ chef.username }}</h3>
-                <p style="text-align: center;"> Total Post Count : {{ chef.postCount }}</p>
-                <p style="text-align: center;">{{ chef.userprofile.description }}</p>
-            </div>    
-        </div>
-    </div>
-    <div class="hidden-lg hidden-md col-sm-12 col-xs-12">
-        <div class="well">
-            <div class="col-sm-6 col-xs-6">
+    <div class="row contentgroup">
+        <div class="col-md-3 hidden-sm hidden-xs hof">
+            <div class="well">
                 <a href="{% url 'limau:user_profile' username=chef.username %}">
-                    <img src="{{ chef.userprofile.picture.url }}" class="img img-responsive img-circle image">
-                </a>
+                    <img src="{{ chef.userprofile.picture.url }}" class="img img-responsive img-circle">
+                </a>    
+                <div class="hof_info">
+                    <h3 style="text-align: center;">{{ chef.username }}</h3>
+                    <p style="text-align: center;"> Total Post Count : {{ chef.postCount }}</p>
+                    <p style="text-align: center;">{{ chef.userprofile.description }}</p>
+                </div>    
             </div>
-            <div id="hof_info">
-                <h4 style="text-align: center;">{{ chef.username }}</h4>
-                <p style="text-align: center;"> Total Post Count : {{ chef.postCount }}</p>
-                <p style="text-align: center;">{{ chef.userprofile.description }}</p>
+        </div>
+        
+        <div class="hidden-lg hidden-md col-sm-6 col-xs-12">
+            <div class="hof_mobile">
+                <div class="col-sm-4 col-xs-4 hof_image_container">
+                    <a href="{% url 'limau:user_profile' username=chef.username %}">
+                        <img src="{{ chef.userprofile.picture.url }}" class=" img img-responsive img-circle">
+                    </a>
+                </div>
+                <div class="col-sm-8 col-xs-8 hof_info">
+                    <h4>{{ chef.username }}</h4>
+                    <p> Total Post Count : {{ chef.postCount }}</p>
+                    <p>{{ chef.userprofile.description }}</p>
+                </div>
             </div>
-        </div>        
-    </div>
+        </div>
+    </div><hr class="style17">
+    
     {% endfor %}
-</div><hr class="style17">
+
 <h2 style="text-align: center;">All Chefs</h2>
 
 {% include page_template %}

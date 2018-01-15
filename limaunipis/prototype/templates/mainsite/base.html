@@ -29,6 +29,9 @@
 
 		<!--Google font-->
 		<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Berkshire+Swash" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Concert+One" rel="stylesheet">
 
 
 
@@ -51,8 +54,7 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class=""><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-			<li><a href="#contact">Contact Us</a></li>
+            <li><a href="#about">Contact Us</a></li>
 			<li><a href="{% url 'limau:user_recipe_all' %}">USER RECIPES</a></li>
 			<li><a href="{% url 'limau:all_users' %}">ALL CHEFS</a></li>
             <li class="dropdown hidden-sm hidden-md hidden-lg">
@@ -79,7 +81,7 @@
     </nav>
 
 	<!-- Desktop Size Navigation-->
-	<div class="row hidden-xs">
+	<div class="row hidden-xs hidden-sm">
 		<div class="container">
 	  
 			<div class="col-md-12 col-sm-12 col-xs-12">
@@ -99,7 +101,7 @@
 		<!--<div class="col-md-12 col-sm-12 col-xs-12">	-->
 			<div id="bodycontent">
 				<div class="row">
-    			<div class="col-md-9 col-sm-9 col-xs-12">
+    			<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
 					
 						{% block body_block %}
 						{% endblock %}
@@ -142,7 +144,7 @@
 
 	<!--Footer only visible during mobile view-->
 		
-	<footer class="footer hidden-lg hidden-md hidden-sm">
+	<footer class="footer hidden-lg hidden-md">
     <div class="container">
 			<div class=row>
 				<div class="col-xs-2 item" id="recipe-footer-button">
@@ -162,11 +164,11 @@
 					<p>Rests.</p>
 				</div>
 				<div class="col-xs-2 item" id="restaurants-footer-button">
-					<a href="{% url 'limau:restaurant_all' %}"><i class="fa fa-cutlery" aria-hidden="true"></i></a>
+					<a href="{% url 'limau:user_recipe_all' %}"><i class="fa fa-cutlery" aria-hidden="true"></i></a>
 					<p>User.R</p>
 				</div>
 				<div class="col-xs-2 item" id="restaurants-footer-button">
-					<a href="{% url 'limau:restaurant_all' %}"><i class="fa fa-address-book" aria-hidden="true"></i></a>
+					<a href="{% url 'limau:all_users' %}"><i class="fa fa-address-book" aria-hidden="true"></i></a>
 					<p>Chef</p>
 				</div>						
 			</div>

@@ -141,52 +141,43 @@ hr.style17:after {
 	margin-left: 10px;
 }
 
-/* user profile css */
 
-#hof_info {
-	margin-top: 10px;
+/* change jumbotron properties in mobile view */
+@media (max-width: 800px) {
+	.jumbotron {
+		overflow: hidden;
+		background : linear-gradient(to bottom right, lightgreen, white, lightgoldenrodyellow, white, lightgreen)
+	}
+	.jumbotron p {
+		font-size: medium;
+		text-align: center;
+
+	}
 }
 
-.image {
-	border: 4px solid gold;
+.well {
+	overflow : hidden;
 }
 
-/* to create 5 column in the mobile view footer */
+/* ALL_USERS.HTML SECTION */
 
-.col-xs-5ths,
-.col-sm-5ths,
-.col-md-5ths,
-.col-lg-5ths {
-    position: relative;
-    min-height: 1px;
-    padding-right: 15px;
-    padding-left: 15px;
+/* change hall of fame header to golden */
+#hof_header {
+	color: goldenrod;
+	font-family: 'Berkshire Swash', cursive;
+	text-align: center;
+	margin-bottom: 10px;
+	margin-top: 0px;
 }
 
-.col-xs-5ths {
-    width: 20%;
-    float: left;
+
+
+.hof_info h4 {
+	margin-top: 0px;
+	font-family: 'Cinzel', sans-serif;
+	font-weight: bold;
 }
 
-@media (min-width: 768px) {
-    .col-sm-5ths {
-        width: 20%;
-        float: left;
-    }
+.hof_info p {
+	font-family: 'Concert One', sans-serif;
 }
-
-@media (min-width: 992px) {
-    .col-md-5ths {
-        width: 20%;
-        float: left;
-    }
-}
-
-@media (min-width: 1200px) {
-    .col-lg-5ths {
-        width: 20%;
-        float: left;
-    }
-}
-
-/* end of css for mobile view footer 5 column */

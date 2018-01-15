@@ -23,12 +23,15 @@ def index(request):
         restaurants = Restaurant.objects.all()
         content_list = sorted(chain(recipes, articles, restaurants), key=attrgetter('created_date'), reverse=True)
         banner = MobileBanner.objects.all()
+        bannerurl = banner[0].image.url
     except (Recipe.DoesNotExist, Article.DoesNotExist, Restaurant.DoesNotExist):
         raise Http404("Post Does Not Exist")
     context = {
         'content_list' : content_list,
         'page_template' : page_template,
         'nbar' : "home",
+        'bannerurl' : bannerurl,
+        'banner' : banner,
     }
     if request.is_ajax():
         template = page_template

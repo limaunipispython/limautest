@@ -4,6 +4,28 @@
 
 {% block body_block %}
 
+<div class="row">
+    <div class="hidden-lg hidden-md col-sm-12 col-xs-12">
+        <div class="jumbotron">
+            <div class="col-sm-4 col-xs-6">
+                <a href="#">
+                    <img src="{{ bannerurl }}" class="img img-responsive img-circle image">
+                </a>
+            </div>
+            <div class="col-sm-4 col-sm-offset-4 col-xs-6">
+                <p>SOCIAL MEDIA</p>
+                <div class="row">
+                    <div class="col-sm-6 col-xs-6">
+                            <a href="{{ banner.2.image_url }}"><img src="{{ banner.2.image.url }}" class="img img-responsive"></a>
+                    </div>
+                    <div class="col-sm-6 col-xs-6">
+                            <a href="{{ banner.1.image_url }}"><img src="{{ banner.1.image.url }}" class="img img-responsive"></br></a>
+                    </div>
+                </div>
+            </div>    
+        </div>
+    </div>
+</div>
 {% include page_template %}
 
 {% block js %}

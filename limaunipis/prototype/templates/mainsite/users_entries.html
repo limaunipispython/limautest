@@ -3,15 +3,20 @@
 
 <div class="row contentgroup">
     {% for chef in users %}
-    <div class="col-md-3 col-sm-6 col-xs-6">
-        <div class="thumbnail">
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="well user_well">
             <a href="{% url 'limau:user_profile' username=chef.username %}">
-                <img src="{{ chef.userprofile.picture.url }}">
-                <div class="caption">
-                    <h3 style="text-align: center;">{{ chef.username }}</h3>
-                    <p>{{ chef.userprofile.description }}</p>
+                <div class="col-md-3 col-sm-6 col-xs-6">
+                    <img src="{{ chef.userprofile.picture.url }}" class="img img-responsive img-circle">
                 </div>
             </a>
+
+            <div class="user_info">
+                <h4 style="text-align: center;">{{ chef.username }}</h4>
+                <!-- <p style="text-align: center;"> Total Post Count : {{ chef.postCount }}</p> -->
+                <p style="text-align: center;">{{ chef.userprofile.description }}</p>
+
+            </div>
         </div>
     </div>
     {% endfor %}
