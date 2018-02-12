@@ -4,11 +4,11 @@
 {% block body_block %}
 <div class="row contentgroup">
     <div class="col-md-12 col-sm-12 col-xs-12">
-        <h3>{{ recipe.name_bm }}</h3>
+        <h3 id="recipe_header">{{ recipe.name_bm }}</h3>
     </div>
 </div>
 
-<div class="row contentgroup">
+<!-- <div class="row contentgroup">
     <div class="col-md-6 col-sm-6 col-xs-12">
         <div class="youtube">
             <iframe width="854" height="480" src="{{ recipe.youtube_url }}" frameborder="0" allowfullscreen></iframe>
@@ -23,8 +23,81 @@
     <div class="col-md-6 col-sm-6 col-xs-12">
         <div class="recipe_description">
             {{ recipe.description | safe }}
+        </div>  
+    </div>
+
+</div> -->
+
+<div class="row hidden-md hidden-lg">
+    <div class="col-sm-12 col-xs-12">
+        <div class="youtube">
+            <iframe width="854" height="480" src="{{ recipe.youtube_url }}" frameborder="0" allowfullscreen></iframe>
         </div>
+    </div>
+    <div class="col-sm-12 col-xs-12">
+        <p class="serving-time"> SAIZ HIDANGAN : {{ recipe.serve }} orang</p>
+    </div>
+    <div class="col-sm-4 col-xs-4">
+        <div class="recipe_ingredient">
+            <h4>Ingredients</h4>
+            <hr class="style-two" style="margin-top:0; margin-bottom:5px;">
+            {{ recipe.ingredient_content | safe }}
+        </div>
+    </div>
+    <div class="col-sm-8 col-xs-8">
+        <div class="recipe_instruction">
+            <h4>Instructions</h4>
+            <hr class="style-two" style="margin-top:0; margin-bottom:5px;">
+            <ol>{{ recipe.instruction | safe }}</ol>
+        </div>
+    </div>
+    <div class="col-sm-12 col-xs-12">
+        <hr class="style-two">
     </div>
 
 </div>
+
+<div class="row hidden-sm hidden-xs">
+    <div class="col-md-9">
+            <div class="youtube">
+                <iframe width="854" height="480" src="{{ recipe.youtube_url }}" frameborder="0" allowfullscreen></iframe>
+            </div>
+    </div>
+    <div class="col-md-3">
+        <div class="row col-md-12" style="margin-bottom: 8px;">
+            <img src="{{ recipe.thumbnail.url }}" class="img img-responsive recipe-image">
+        </div>
+        <div class="row col-md-12" style="margin-bottom: 8px;">
+            <img src="{{ recipe.thumbnail2.url }}" class="img img-responsive recipe-image">
+        </div>
+        <div class="row col-md-12">
+            <img src="{{ recipe.thumbnail3.url }}" class="img img-responsive recipe-image">
+        </div>
+    </div>
+    <div class="col-md-12">
+        <p class="serving-time"> SAIZ HIDANGAN : {{ recipe.serve }} orang</p>   
+    </div>
+</div>
+
+<div class="row hidden-sm hidden-xs">
+    <div class="col-md-2 col-lg-2">
+        <div class="recipe_ingredient">
+            <h4>Ingredients</h4>
+            <hr class="style-two" style="margin-top:0; margin-bottom:5px;">
+            {{ recipe.ingredient_content | safe }}
+        </div>
+    </div>
+    <div class="col-md-9 col-lg-9">
+        <div class="recipe_instruction">
+            <h4>Instructions</h4>
+            <hr class="style-two" style="margin-top:0; margin-bottom:5px;">
+            <ol>{{ recipe.instruction | safe }}</ol>
+        </div>
+    </div>
+    <div class="col-sm-12 col-xs-12">
+        <hr class="style-two">
+    </div>
+</div>
+
+
 {% endblock %}

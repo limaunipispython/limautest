@@ -1,6 +1,6 @@
 from django.contrib import admin
 from limau.models import RecipeCategory, ArticleCategory, RestaurantCategory, Ingredient, Recipe, Article, Restaurant, UserRecipe
-from limau.models import UserProfile, MobileBanner
+from limau.models import UserProfile, MobileBanner, Announcement, Product, ProductBanner
 
 # Register your models here.
 
@@ -14,3 +14,6 @@ admin.site.register(Restaurant)
 admin.site.register(UserRecipe)
 admin.site.register(UserProfile)
 admin.site.register(MobileBanner)
+admin.site.register(Announcement)
+admin.site.register(Product)
+admin.site.register(ProductBanner)

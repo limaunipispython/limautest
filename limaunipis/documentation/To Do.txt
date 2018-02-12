@@ -11,11 +11,12 @@ MAJOR
 5. HTML and CSS beautification for all function with bootstrap and responsive mobile testing 
 5. Function Testing 
 7. Ingredient page and link to recipe
+8. Ajax for user profile
 
 	
 MINOR
 1. Update restaurant model to include "price" IntegerField
-2. Update html css for welcome guest  
+2. Update html css for welcome guest  - done
 4. Update recipe model to include thumbnail for youtube video. replace the current index and recipe_all display
    to picture thumbnail instead of youtube link - KIV
 5. Build sidebar html for youtube and facebook link and find way to build the same function into mobile - partially done

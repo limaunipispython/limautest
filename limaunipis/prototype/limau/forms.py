@@ -30,7 +30,7 @@ class UserRecipeForm(forms.ModelForm):
 
     class Meta: 
         model = UserRecipe
-        fields = ('recipecategory', 'name_bm', 'name_en', 'description', 'content', 'picture_1', 'picture_2')
+        fields = ('recipecategory', 'name_bm', 'name_en', 'description', 'ingredients', 'instructions', 'picture_1', 'picture_2')
         labels = {
             "name_bm" : "Nama Resepi Bahasa Melayu",
             "name_en" : "Recipe Name in English",

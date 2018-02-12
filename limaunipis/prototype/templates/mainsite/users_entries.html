@@ -1,26 +1,74 @@
 {% load el_pagination_tags %}
 {% paginate users  %}
+<div class="row col-md-12 hidden-sm hidden-xs"><hr class="style-two"></div>
+<h1 id="all_user_header" style="text-align: center;">All Chefs</h1></br>
+<div class="row">
+{% for chef in users %}
 
-<div class="row contentgroup">
-    {% for chef in users %}
-    <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="well user_well">
-            <a href="{% url 'limau:user_profile' username=chef.username %}">
-                <div class="col-md-3 col-sm-6 col-xs-6">
-                    <img src="{{ chef.userprofile.picture.url }}" class="img img-responsive img-circle">
+    <div class="hidden-sm hidden-xs col-md-6">
+        <div class="users_desktop col-md-8">
+            <div class="col-md-5">
+                <a href="{% url 'limau:user_profile' username=chef.username %}">
+                        <img src="{{ chef.userprofile.picture.url }}" class="img img-responsive img-circle user_entry_img">
+                </a>
+            </div>
+            <div class="col-md-7">
+                <div class="user_name">
+                <h4><a class="user_entry_name" href="{% url 'limau:user_profile' username=chef.username %}">{{ chef.username }}</a></h5>
                 </div>
-            </a>
-
-            <div class="user_info">
-                <h4 style="text-align: center;">{{ chef.username }}</h4>
-                <!-- <p style="text-align: center;"> Total Post Count : {{ chef.postCount }}</p> -->
-                <p style="text-align: center;">{{ chef.userprofile.description }}</p>
-
             </div>
         </div>
+        {% if chef.userprofile.badge == 1 %}
+        <div class="badges_gold col-md-4">
+            <i class="fa fa-trophy" aria-hidden="true"></i>
+            <p>GOLD</p>
+        </div>
+        {% elif chef.userprofile.badge == 2 %}
+        <div class="badges_silver col-md-4">
+            <i class="fa fa-trophy" aria-hidden="true"></i>
+            <p>SILVER</p>
+        </div>
+        {% else %}
+        <div class="badges_bronze col-md-4">
+            <i class="fa fa-trophy" aria-hidden="true"></i>
+            <p>BRONZE</p>
+        </div>
+        {% endif %}
     </div>
-    {% endfor %}
-</div>
 
+
+
+    <div class="hidden-lg hidden-md col-sm-6 col-xs-12 ">
+        <div class="users_mobile col-xs-8 col-sm-8">
+            <div class="col-xs-5">
+                <a href="{% url 'limau:user_profile' username=chef.username %}">
+                        <img src="{{ chef.userprofile.picture.url }}" class="img img-responsive img-circle user_entry_img">
+                </a>
+            </div>
+            <div class="col-xs-7">
+                <div class="user_name">
+                <h4><a class="user_entry_name" href="{% url 'limau:user_profile' username=chef.username %}">{{ chef.username }}</a></h5>
+                </div>
+            </div>
+        </div>
+        {% if chef.userprofile.badge == 1 %}
+        <div class="badges_gold col-xs-4">
+            <i class="fa fa-trophy" aria-hidden="true"></i>
+            <p>GOLD</p>
+        </div>
+        {% elif chef.userprofile.badge == 2 %}
+        <div class="badges_silver col-xs-4">
+            <i class="fa fa-trophy" aria-hidden="true"></i>
+            <p>SILVER</p>
+        </div>
+        {% else %}
+        <div class="badges_bronze col-xs-4">
+            <i class="fa fa-trophy" aria-hidden="true"></i>
+            <p>BRONZE</p>
+        </div>
+        {% endif %}
+    </div>
+{% endfor %}
+</div>
 
 {% show_more %}

@@ -14,5 +14,7 @@ body {
 .navbar-brand {
   font-weight : bold !important;
   font-size : 150%!important;
-  color: green !important;
+  color: yellowgreen !important;
+  font-family: 'Spectral SC' , serif;
+
 }

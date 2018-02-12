@@ -30,9 +30,10 @@
 		<!--Google font-->
 		<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Berkshire+Swash" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Concert+One" rel="stylesheet">
-
+		<link href="https://fonts.googleapis.com/css?family=Marcellus+SC|PT+Sans" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Kreon" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Spectral+SC" rel="stylesheet">
 
 
   	</head>
@@ -49,13 +50,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="{% url 'limau:index' %}">Limau Nipis</a>
-        </div>
+		  <a class="navbar-brand" href="{% url 'limau:index' %}">Limau Nipis</a>
+		  <a href="{% url 'limau:shop_index' %}" class="btn btn-info navbar-btn" role="button">SHOP HERE!</a>
+		  <!-- <button class="btn btn-danger navbar-btn">SHOP HERE!</button> -->
+		</div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class=""><a href="#">Home</a></li>
             <li><a href="#about">Contact Us</a></li>
-			<li><a href="{% url 'limau:user_recipe_all' %}">USER RECIPES</a></li>
 			<li><a href="{% url 'limau:all_users' %}">ALL CHEFS</a></li>
             <li class="dropdown hidden-sm hidden-md hidden-lg">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category<span class="caret"></span></a>
@@ -86,10 +87,11 @@
 	  
 			<div class="col-md-12 col-sm-12 col-xs-12">
 				<ul class="nav nav-tabs nav-justified">
-				<li class="{% if nbar == 'home' %}active{% endif %}"><a href="{% url 'limau:index' %}">Home</a></li>
-				<li class="{% if nbar == 'recipes' %}active{% endif %}"><a href="{% url 'limau:recipe_all' %}">Recipes</a></li>
-				<li class="{% if nbar == 'articles' %}active{% endif %}"><a href="{% url 'limau:article_all' %}">Articles</a></li>
-				<li class="{% if nbar == 'restaurants' %}active{% endif %}"><a href="{% url 'limau:restaurant_all' %}">Restaurants</a></li>
+				<li class="{% if nbar == 'home' %}active{% endif %} mynav"><a href="{% url 'limau:index' %}">Home</a></li>
+				<li class="{% if nbar == 'recipes' %}active{% endif %} mynav"><a href="{% url 'limau:recipe_all' %}">Recipes</a></li>
+				<li class="{% if nbar == 'articles' %}active{% endif %} mynav"><a href="{% url 'limau:article_all' %}">Articles</a></li>
+				<li class="{% if nbar == 'restaurants' %}active{% endif %} mynav"><a href="{% url 'limau:restaurant_all' %}">Restaurants</a></li>
+				<li class="{% if nbar == 'userrecipe' %}active{% endif %} mynav"><a href="{% url 'limau:user_recipe_all' %}">User Recipe</a></li>			
 			</ul>
 			</div>				    	      
 	    
@@ -98,47 +100,46 @@
 
 	<!--content-->
 	<div class="container">
-		<!--<div class="col-md-12 col-sm-12 col-xs-12">	-->
 			<div id="bodycontent">
 				<div class="row">
-    			<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
-					
-						{% block body_block %}
-						{% endblock %}
-    			</div>
+					<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">						
+							{% block body_block %}
+							{% endblock %}
+					</div>
+				
+				<!-- desktop sidebar -->
 					<div class="col-md-3 hidden-sm hidden-xs">
 						<div class="row">
-							<div class="alert alert-success">
+							<div id="welcome_user">
 							{% if user.is_authenticated %}
 								Welcome {{ user.username }}!
 							{% else %}
-								hey there Guest!
+								Hey there Guest!
 							{% endif %}
 							</div>
-						</div>
-<!-- sidebar panel for desktop -->
-						<div class="row">
-							<div class="panel panel-info">
-								<div class="panel-heading">ANNOUNCEMENT</div>
-								<div class="panel-body">Limau Nipis will be online in May 2017!!</div>
-							</div>
-						</div>
-						<div class="row" style="margin-bottom: 10px;">
-							<a href="{% url 'limau:user_recipe_post' %}" class='btn	btn-default	 btn-block'>Post Your Recipe!</a>		
-						</div>
+						</div></br>
+
+						{% get_announcement %}
+						
+						{% get_social_media %}
+
 						<div class="row">
 							<div class="panel panel-primary">
-							  	<div class="panel-heading"><a href="{% url 'limau:user_recipe_all' %}" style="text-decoration: none; color: white;">USER POSTED RECIPE</a>
+							  	<div class="panel-heading" style="text-align:center;"><a href="{% url 'limau:user_recipe_all' %}" style="text-decoration: none; color: white;">USER POSTED RECIPE</a>
 								</div>		
+								<div id="post_recipe_button" style="text-align:center; margin-top: 10px;">
+									<a href="{% url 'limau:user_recipe_post' %}" class='btn	btn-default'>Post Your Recipe!</a>
+								</div>
 								{% get_recent_user_recipe %}
+								
+								
+								
    						 	</div>
 						</div>
-
-
-    			</div>
+			
+    				</div>
 				</div>
 			</div>
-		<!--</div>-->
 	</div>
 	<!--endcontent-->
 

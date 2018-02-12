@@ -48,6 +48,8 @@ urlpatterns = [
     url(r'^user_profile/(?P<username>[\w\-]+)/$', views.user_profile, name="user_profile"),
     url(r'^user_profile_form/$', views.user_profile_form, name="user_profile_form"),
     url(r'^all_chefs/$', views.all_users, name="all_users"),
+    #SHOP SECTION
+    url(r'^shop_index/$', views.shop_index, name="shop_index"),
 ]
 
 media_url = url(r'media/(?P<path>.*)', static.serve, {'document_root' : settings.MEDIA_ROOT}, name="media_folder")

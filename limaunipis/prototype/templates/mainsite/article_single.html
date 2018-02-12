@@ -3,13 +3,7 @@
 
 {% block body_block %}
 
-<div class="row contentgroup">
-    <div class="col-md-12 col-sm-12 col-xs-12">
-        <h3>{{ article.title_bm }}</h3>
-    </div>
-</div>
-
-<div class="row contentgroup hidden-sm hidden-xs">
+<!-- <div class="row contentgroup hidden-sm hidden-xs">
     <div class="col-md-5">
         <img src="{{ article.thumbnail.url }}" style="width:100%">
         <div class="panel panel-info" style="margin-top: 10px">
@@ -33,6 +27,74 @@
     <div class="col-sm-12 col-xs-12">
         <span class="article_text"> <div style="padding-top: 10px"> {{ article.text_bm | safe }}</div></span>
     </div>  
+</div> -->
+
+<div class="row hidden-sm hidden-xs">
+    <div class="col-md-12">
+        <img src="{{ article.thumbnail.url }}" class="img img-rounded" style="width:95%">
+    </div>
+    <div class="col-md-12 ">
+        <p class="article-single-created-date">
+            Post Date : {{ article.created_date }}
+        </p>
+    </div>
+    <div class="col-md-12" id="article-single-header" style="width:95%;">
+        <h2 style="margin-top: 0px;">{{ article.title_bm }}</h2>
+    </div>
+    <div class="col-md-12 article-single-text" style="width:95%">
+            {{ article.text_bm | safe }}
+    </div>
+    <div class="col-md-12">
+        <hr class="style-two">
+    </div>
+    <div class="col-md-6">
+        <h3 class="kreon" style="margin-top: 0;">Recent Articles</h3>
+    {% for article in recent_articles %}
+        <div class="row col-md-12 col-lg-12">
+            <div class="thumbnail">
+                <a href="{% url 'limau:article_single' slug=article.slug %}">
+                    <img src="{{ article.thumbnail.url }}" alt="Nature" style="width:100%">
+                    <div class="caption" style="text-align:center">
+                        <p>{{article.title_bm}}</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
 </div>
+
+<div class="row contentgroup hidden-md hidden-lg">
+    <div class="col-sm-12 col-xs-12">
+        <img src="{{ article.thumbnail.url }}" class="img img-rounded" style="width:100%">
+    </div>
+    <div class="col-sm-12 col-xs-12">
+        <p class="article-single-created-date">
+            Post Date : {{ article.created_date }}
+        </p>
+    </div>
+    <div class="col-sm-12 col-xs-12" id="article-single-header" style="width:100%;">
+        <h2 style="margin-top: 0px;">{{ article.title_bm }}</h2>
+    </div>
+    <div class="col-sm-12 col-xs-12 article-single-text" style="width:100%">
+            {{ article.text_bm | safe }}
+    </div>
+    <div class="col-sm-12 col-xs-12">
+        <hr class="style-two">
+    </div>
+    {% for article in recent_articles %}
+        <div class="col-sm-6 col-xs-12">
+            <div class="thumbnail">
+                <a href="{% url 'limau:article_single' slug=article.slug %}">
+                    <img src="{{ article.thumbnail.url }}" alt="Nature" style="width:100%">
+                    <div class="caption" style="text-align:center">
+                        <h4>{{article.title_bm}}</h4>
+                    </div>
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
 
 {% endblock %}

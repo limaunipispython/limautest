@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.template import loader
 from limau.models import Recipe, Article, Restaurant, UserRecipe
-from limau.models import RecipeCategory, ArticleCategory, RestaurantCategory, MobileBanner
+from limau.models import RecipeCategory, ArticleCategory, RestaurantCategory, MobileBanner, ProductBanner
 from limau.forms import UserForm, UserProfileForm, UserRecipeForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -90,7 +90,7 @@ def user_recipe_all(request):
     context = {
         'recipes' : recipes,
         'page_template' : page_template,
-        'nbar' : "recipes",
+        'nbar' : "userrecipe",
         'user_recipe_cat' : user_recipe_cat,
     }
 
@@ -229,7 +229,7 @@ def article_single(request, slug):
     template = loader.get_template('mainsite/article_single.html')
     try:
         article = Article.objects.get(slug=slug)
-        recent_articles = Article.objects.all().order_by('-created_date')[:5]
+        recent_articles = Article.objects.all().order_by('-created_date')[:4]
     except Article.DoesNotExist:
         raise Http404("Error 404")
     context = {
@@ -355,6 +355,7 @@ def user_recipe_post(request):
     return HttpResponse(template.render(context,request))
 
 #single user recipe view
+
 def user_recipe_single(request, slug):
     template = loader.get_template('mainsite/user_recipe_single.html')
 
@@ -366,7 +367,7 @@ def user_recipe_single(request, slug):
     context = {
         'user_recipe' : user_recipe,
         'latest_recipe': latest_recipe,
-        'nbar' : 'recipes',
+        'nbar' : 'userrecipe',
     }
     return HttpResponse(template.render(context, request))
 
@@ -450,7 +451,19 @@ def all_users(request):
 
     return HttpResponse(template.render(context, request))
 
+#-----------------------SHOP SECTION-------------------------------
 
+def shop_index(request):
+    template = loader.get_template('mainsite/shop_index.html')
+    try:
+        product_banner = ProductBanner.objects.all()[:3]
+    except ProductBanner.DoesNotExist:
+        raise Http404("Error 404")
+
+    context = {
+        'product_banner' : product_banner,
+    }
+    return HttpResponse(template.render(context, request))
 
 # MISCELLANEOUS
 

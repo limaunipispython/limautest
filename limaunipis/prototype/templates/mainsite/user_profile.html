@@ -2,13 +2,13 @@
 {% load staticfiles %}
 
 {% block body_block %}
-<div class="row contentgroup">
-    <div class="col-md-3 col-sm-12 col-xs-12">
+<div class="row">
+    <div class="col-md-3 hidden-xs hiddens-sm">
         <div class="thumbnail">
             <a href="#">
                 <img src="{{ userlimau.userprofile.picture.url }}" ></br>     
                 <div class="caption">
-                        <h3 style="text-align: center;">{{ userlimau.username }}</h3>
+                        <h3 style="text-align: center; margin-top: 0;">{{ userlimau.username }}</h3>
                         <p style="text-align: center;">{{ userlimau.userprofile.description }}</p>
                 </div>
             </a>
@@ -17,14 +17,35 @@
         <a class="btn btn-default" href="{% url 'limau:user_profile_form'  %}" ><span class="glyphicon glyphicon-pencil"> EDIT </span></a>
         {% endif %}</br>
     </div>
+    <div class="col-sm-6 col-xs-6 hidden-md hidden-lg" style="margin-bottom: 10px;">
+        <img src="{{ userlimau.userprofile.picture.url }}" alt="" class="img img-responsive img-circle" style="border: solid goldenrod;">
+    </div>
+    <div class="col-sm-6 col-xs-6 hidden-md hidden-lg user_name" style="margin-bottom: 10px;">
+        <h3 class="spectral-gold">{{ userlimau.username }}</h3>
+        <p>{{ userlimau.userprofile.description }}</p>
+    </div>
+    <div class="col-sm-12 col-xs-12 hidden-md hidden-lg">
+        <hr class="style17">
+        <h4 class="kreon" style="text-align:center;">RECIPE SUBMISSION</h4>
+    </div>
     <div class="col-md-9 col-sm-12 col-xs-12">
-        <h3 style="text-align: center;"> User Posted Recipes </h3>
+        <h4 class="kreon">RECIPE SUBMISSION</h4>
         {% for recipe in userlimau.userrecipe_set.all %}
-        <div class="col-md-4 col-sm-12 col-xs-12">
-            <div class="thumbnail">
-                <img src="{{ recipe.picture_1.url}}">
-                <h4 style="text-align: center;">{{ recipe.name_bm }}</h4>
+        <div class="col-md-6 col-sm-12 col-xs-12">
+            <div class="article_picture">
+                <img src="{{ recipe.picture_1.url }}" class="img img-rounded" style="width:100%">
             </div>
+        </div>
+        <div class="col-md-6 col-sm-12 col-xs-12">
+            <div class="content_text">
+                <h4><a href="{% url 'limau:user_recipe_single' slug=recipe.slug  %}">{{ recipe.name_bm }}</a></h4>
+                <p>Post date : {{ recipe.created_date }}</p>
+                <content>{{ recipe.description | truncatechars:100 | safe }}</content></br>
+                <a href="{% url 'limau:user_recipe_single' slug=recipe.slug %}" class="btn btn-success" role="button">Read More</a>
+            </div>
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <hr class="style-two">
         </div>
         {% endfor %}
     </div>

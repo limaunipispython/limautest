@@ -19,12 +19,12 @@
                 <a href="{% url 'limau:recipe_single' slug=item.slug %}" class="btn btn-success" role="button">Read More</a>
             </div>
         </div>
-    </div><hr class="style17">
+    </div><hr class="style-two">
     {% elif item|get_class == 'Article' %}
     <div class="row contentgroup">
         <div class="col-md-6 col-sm-12 col-xs-12">
             <div class="article_picture">
-                <img src="{{ item.thumbnail.url }}" style="width:100%">
+                <img class="img img-rounded" src="{{ item.thumbnail.url }}" style="width:100%">
             </div>
         </div>
         <div class="col-md-6 col-sm-12 col-xs-12">
@@ -35,7 +35,7 @@
                 <a href="{% url 'limau:article_single' slug=item.slug %}" class="btn btn-success" role="button">Read More</a>
             </div>
         </div>
-    </div><hr class="style17">
+    </div><hr class="style-two">
     {% elif item|get_class == 'Restaurant' %}
     <div class="row contentgroup">
         <div class="col-md-12 col-sm-12 col-xs-12 restaurant_title">
@@ -44,12 +44,12 @@
         </div>
         <div class="col-md-4 col-sm-4 col-xs-6">
             <div class="restaurant_pic">
-                <img src="{{ item.building_thumbnail.url }}" style="width:100%">
+                <img class="img img-rounded" src="{{ item.building_thumbnail.url }}" style="width:100%">
             </div>
         </div>
         <div class="col-md-4 col-sm-4 col-xs-6">
             <div class="restaurant_pic">
-                <img src="{{ item.food_thumbnail_1.url }}" style="width:100%">
+                <img class="img img-rounded" src="{{ item.food_thumbnail_1.url }}" style="width:100%">
             </div>
         </div>
         <div class="col-md-4 col-sm-4 col-xs-12">
@@ -63,7 +63,7 @@
                 <a href="{% url 'limau:restaurant_single' slug=item.slug %}" class="btn btn-success" role="button">Read More</a>
             </div>
         </div>
-    </div><hr class="style17">
+    </div><hr class="style-two">
 
     {% endif %}
 {% endfor %}

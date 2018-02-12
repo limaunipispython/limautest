@@ -72,11 +72,16 @@ class Recipe(models.Model):
     name_bm = models.CharField(max_length=128)
     name_en = models.CharField(max_length=128)
     youtube_url = models.URLField()
-    thumbnail = ProcessedImageField(upload_to='recipe_thumbnail', processors=[ResizeToFill(320,180)], format="JPEG", options={'quality':70})
-    description = models.TextField()
+    thumbnail = ProcessedImageField(upload_to='recipe_thumbnail', processors=[ResizeToFill(640,360)], format="JPEG", options={'quality':70})
+    thumbnail2 = ProcessedImageField(upload_to='recipe_thumbnail', processors=[ResizeToFill(640,360)], format="JPEG", options={'quality':70})
+    thumbnail3 = ProcessedImageField(upload_to='recipe_thumbnail', processors=[ResizeToFill(640,360)], format="JPEG", options={'quality':70})
+    description = models.TextField(default="type a description of your recipe")
+    ingredient_content = models.TextField(default="type your ingredients here, in <li> form")
     ingredients = models.ManyToManyField(Ingredient)
     created_date = models.DateTimeField(default=timezone.now)
     slug = models.SlugField(default='will-be-generated-once-save')
+    serve = models.IntegerField(choices=SERVING_NUMBER, default=3)
+    instruction = models.TextField(default="fill in step by step instruction here")
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name_en)#should be name_bm
@@ -89,7 +94,7 @@ class Article(models.Model):
     articlecategory = models.ManyToManyField(ArticleCategory)
     title_bm = models.CharField(max_length=200)
     created_date = models.DateTimeField(default=timezone.now)
-    thumbnail = ProcessedImageField(upload_to='article_thumbnail', processors=[ResizeToFill(320,130)], format="JPEG", options={'quality':70})
+    thumbnail = ProcessedImageField(upload_to='article_thumbnail', processors=[ResizeToFill(640,260)], format="JPEG", options={'quality':80})
     text_bm = models.TextField()
     slug = models.SlugField(default='will-be-generated-once-save')
 
@@ -146,10 +151,11 @@ class UserRecipe(models.Model):
     recipecategory = models.ForeignKey(RecipeCategory)
     name_bm = models.CharField(max_length=128, unique=True)
     name_en = models.CharField(max_length=128, unique=True)
-    description = models.TextField(max_length=300) #this one should be a textfield 
-    content = models.TextField()
-    picture_1 = ProcessedImageField(upload_to='user_recipe_thumbnail', processors=[ResizeToFill(320,180)], format="JPEG", options={'quality':70})
-    picture_2 = ProcessedImageField(upload_to='user_recipe_thumbnail', processors=[ResizeToFill(320,180)], format="JPEG", options={'quality':70})
+    description = models.TextField(max_length=300, default="my food is the best in the world!!") #this one should be a textfield 
+    ingredients = models.TextField(default="key in your ingredienst here in <li>ingredients</li> tag")
+    instructions = models.TextField(default="key in your instruction here in <li>ingredients<li> tag")
+    picture_1 = ProcessedImageField(upload_to='user_recipe_thumbnail', processors=[ResizeToFill(640,360)], format="JPEG", options={'quality':70})
+    picture_2 = ProcessedImageField(upload_to='user_recipe_thumbnail', processors=[ResizeToFill(640,360)], format="JPEG", options={'quality':70})
     #need to add postdate field
     created_date = models.DateTimeField(default=timezone.now)
     slug = models.SlugField(default='will-be-generated-once-save')
@@ -171,6 +177,7 @@ class UserProfile(models.Model):
     default_pic = '/media/user_picture/Koala.jpg'  
     picture = ProcessedImageField(upload_to="user_picture", processors=[ResizeToFill(180, 180)], format="JPEG", options={'quality':70}, null=True, blank=True, default=default_pic)
     description = models.TextField(max_length=300, default="description")
+    badge = models.IntegerField(choices=BADGES, default=3)
 
     def __str__(self):
         return self.user.username
@@ -195,8 +202,60 @@ class MobileBanner(models.Model):
     def __str__(self):
         return self.name
 
+# models for announcement
+class Announcement(models.Model):
+    about = models.CharField(max_length=50, default="description of announcement")
+    text = models.TextField(default="write the announcement here")
+    created_date = models.DateTimeField(default=timezone.now)
 
+    def __str__(self):
+        return self.about
 
+# ---------------------Product Section---------------------------
+# models for Product
+class Product(models.Model):
+    name = models.CharField(max_length=100, default="fill in your product name here")
+    image_1 = ProcessedImageField(upload_to="products", processors=[ResizeToFill(360, 360)], format="PNG", options={'quality':80}, null=True, blank=True )
+    image_2 = ProcessedImageField(upload_to="products", processors=[ResizeToFill(360, 360)], format="PNG", options={'quality':80}, null=True, blank=True )
+    image_3 = ProcessedImageField(upload_to="products", processors=[ResizeToFill(360, 360)], format="PNG", options={'quality':80}, null=True, blank=True )
+    image_4 = ProcessedImageField(upload_to="products", processors=[ResizeToFill(360, 360)], format="PNG", options={'quality':80}, null=True, blank=True )
+    definition = models.CharField(max_length=300, default="Fill in product short definition here")
+    optional_definition_switch = models.BooleanField(default=True)
+    optional_definition = models.TextField(default="Fill in extra definition in HTML form here if switch = true")
+    original_price = models.DecimalField(max_digits=10, decimal_places=2)
+    discount_switch = models.BooleanField(default=False)
+    discount = models.DecimalField(max_digits=10, decimal_places=2, default="5.00")
+    in_stock = models.BooleanField(default=True)
+    discounted_price = models.DecimalField(max_digits=10, decimal_places=2, default="50.00")
+    member_price_switch = models.BooleanField(default=False)
+    discount_member = models.DecimalField(max_digits=10, decimal_places=2, default="7.50")
+    discounted_member_price = models.DecimalField(max_digits=10, decimal_places=2, default="50.00")
+    slug = models.SlugField(default="will-be-generated-once-save")
+
+    def calculate_general_price(self):
+        value = ((100-self.discount)/100)*self.original_price
+        return float(round(value))
+
+    def calculate_member_price(self):
+        value = ((100-self.discount_member)/100)*self.original_price
+        return float(round(value))
+    
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        self.discounted_price = self.calculate_general_price()
+        self.discounted_member_price = self.calculate_member_price()
+        super(Product, self).save(*args, **kwargs)
+    
+    def __str__(self):
+        return self.name
+
+class ProductBanner(models.Model):
+    name = models.CharField(max_length=300)
+    image = ProcessedImageField(upload_to="productBanners", processors=[ResizeToFill(960, 384)], format="PNG", options={'quality':80}, null=True, blank=True )
+    description = models.CharField(max_length=300)  
+
+    def __str__(self):
+        return self.name
 
     
 

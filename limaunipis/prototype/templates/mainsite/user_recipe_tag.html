@@ -7,8 +7,8 @@
 				<img src="{{ recipe.user.userprofile.picture.url }}" class="user_pic img-circle" style="width:100%">
 			</div>
 			<div class="col-md-8">
-				<a href="#"><name>{{ recipe.user }}<name></a>
-				<p>{{ recipe.name_bm }}</p>
+				<a class="user_recipe_sidebar_name" href="{% url 'limau:user_profile' username=recipe.user.username %}"><name>{{ recipe.user }}<name></a>
+				<a class="user_recipe_sidebar_recipe" href="{% url 'limau:user_recipe_single' slug=recipe.slug %}"><p>{{ recipe.name_bm }}</p></a>
 			</div>
 		</div>
 	</div>

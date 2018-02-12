@@ -1,0 +1,15 @@
+{% extends 'mainsite/base_shop.html' %}
+{% load staticfiles %}
+
+{% block body_block %}
+<div class="row">
+    <div class="col-md-12">
+        <ul class="bxslider">
+            {% for banner in product_banner %}
+                <li><img src="{{ banner.image.url }}" alt=""></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+{% endblock %}

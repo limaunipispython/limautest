@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+{% load limau_template_tags %}
+
+<html lang="en">
+  	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="icon" href="../../favicon.ico">
+
+		<title>Limau Nipis</title>
+
+		<!-- Bootstrap core CSS -->
+		<link href="{% static 'bootstrap-3.3.7-dist/css/bootstrap.min.css' %}" rel="stylesheet">
+
+		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+		<link href="{% static 'bootstrap-3.3.7-dist/css/assets-css/ie10-viewport-bug-workaround.css' %}" rel="stylesheet">
+
+		<!-- Custom styles for this template -->
+		<link href="{% static 'CSS/navbar-fixed-top.css' %}" rel="stylesheet">
+		<link href="{% static 'CSS/sticky-footer.css' %}" rel="stylesheet">
+		<link rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}">
+		<link href="{% static 'CSS/content.css' %}" rel="stylesheet">
+
+		<!--Google font-->
+		<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Berkshire+Swash" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Concert+One" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Marcellus+SC|PT+Sans" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Kreon" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Spectral+SC" rel="stylesheet">
+        
+        <!-- bxSlider -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+        
+
+  	</head>
+
+  	<body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{% url 'limau:index' %}">Limau Nipis</a>
+          <a href="#" class="btn btn-info navbar-btn" role="button">HOMEPAGE</a>
+		  <!-- <button class="btn btn-danger navbar-btn">SHOP HERE!</button> -->
+		</div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="#about">Contact Us</a></li>
+			<li><a href="{% url 'limau:all_users' %}">ALL CHEFS</a></li>
+            <li class="dropdown hidden-sm hidden-md hidden-lg">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Recipes</a></li>
+                <li><a href="#">Articles</a></li>
+                <li><a href="#">Restaurants</a></li>
+			  </ul>
+			</li>
+			<li class="hidden-sm hidden-md hidden-lg"><a href="{% url 'limau:user_recipe_post' %}">Post Your Recipe!</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+						{% if user.is_authenticated %}
+							<li><a href="{% url 'auth_logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+							<li><a href="{% url 'limau:user_profile' username=request.user.username %}">My Profile</a></li>	
+						{% else %}	
+							<li><a href="{% url 'registration_register' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+							<li><a href="{% url 'auth_login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+						{% endif %}
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+
+	<!--content-->
+	<div class="container">
+			<div id="bodycontent">
+				<div class="row">
+					<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">						
+							{% block body_block %}
+							{% endblock %}
+					</div>
+				
+				<!-- desktop sidebar -->
+					<div class="col-md-3 hidden-sm hidden-xs">
+						<div class="row">
+							<div id="welcome_user">
+							{% if user.is_authenticated %}
+								Welcome {{ user.username }}!
+							{% else %}
+								Hey there Guest!
+							{% endif %}
+							</div>
+						</div></br>
+
+						{% get_announcement %}
+						
+						{% get_social_media %}
+
+						<div class="row">
+							<div class="panel panel-primary">
+							  	<div class="panel-heading" style="text-align:center;"><a href="{% url 'limau:user_recipe_all' %}" style="text-decoration: none; color: white;">USER POSTED RECIPE</a>
+								</div>		
+								<div id="post_recipe_button" style="text-align:center; margin-top: 10px;">
+									<a href="{% url 'limau:user_recipe_post' %}" class='btn	btn-default'>Post Your Recipe!</a>
+								</div>
+								{% get_recent_user_recipe %}
+								
+								
+								
+   						 	</div>
+						</div>
+			
+    				</div>
+				</div>
+			</div>
+	</div>
+	<!--endcontent-->
+
+	<!--Footer only visible during mobile view-->
+		
+	<footer class="footer hidden-lg hidden-md">
+    <div class="container">
+			<div class=row>
+				<div class="col-xs-2 item" id="recipe-footer-button">
+					<a href="{% url 'limau:index' %}"><i class="fa fa-home" aria-hidden="true"></i></a>
+					<p>Home</p>
+				</div>
+				<div class="col-xs-2 item" id="recipe-footer-button">
+					<a href="{% url 'limau:recipe_all' %}"><i class="fa fa-cutlery" aria-hidden="true"></i></a>
+					<p>Recipe</p>
+				</div>
+				<div class="col-xs-2 item" id="articles-footer-button">
+					<a href="{% url 'limau:article_all' %}"><i class="fa fa-newspaper-o" aria-hidden="true"></i></a>
+					<p>Article</p>
+				</div>
+				<div class="col-xs-2 item" id="restaurants-footer-button">
+					<a href="{% url 'limau:restaurant_all' %}"><i class="fa fa-glass" aria-hidden="true"></i></a>
+					<p>Rests.</p>
+				</div>
+				<div class="col-xs-2 item" id="restaurants-footer-button">
+					<a href="{% url 'limau:user_recipe_all' %}"><i class="fa fa-cutlery" aria-hidden="true"></i></a>
+					<p>User.R</p>
+				</div>
+				<div class="col-xs-2 item" id="restaurants-footer-button">
+					<a href="{% url 'limau:all_users' %}"><i class="fa fa-address-book" aria-hidden="true"></i></a>
+					<p>Chef</p>
+				</div>						
+			</div>
+		</div>	
+	</footer>
+  
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{% static 'bootstrap-3.3.7-dist/js/jquery-3.1.1.min.js' %}"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="{% static 'bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+
+    <script>
+    $(document).ready(function(){
+         $('.bxslider').bxSlider();
+    });
+    </script>
+
+
+
+	<!-- General my own javascript-->
+	<script src="{% static 'JS/myjavascript.js' %}"></script>
+
+		
+  	</body>
+</html> 

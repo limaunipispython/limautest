@@ -77,7 +77,7 @@ body {
 
 }
 
-/*border style for content */
+/*------------------border style for content----------------- */
 hr.style17 {
 	border-top: 1px solid #8c8b8b;
 	text-align: center;
@@ -94,6 +94,12 @@ hr.style17:after {
 	-webkit-transform: rotate(60deg);
 	-moz-transform: rotate(60deg);
 	transform: rotate(60deg);
+}
+
+hr.style-two {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
 }
 
 .btn-success {
@@ -159,9 +165,26 @@ hr.style17:after {
 	overflow : hidden;
 }
 
-/* ALL_USERS.HTML SECTION */
+#social_media_text_mobile {
+	font-family: 'Spectral SC', sans-serif;
+	text-align: center;
+	margin-bottom: 0px;
+	font-weight: bold;
+	color: darkgoldenrod;
 
-/* change hall of fame header to golden */
+}
+
+.limau_mobile {
+	border: solid goldenrod;
+}
+
+/* ---------------------------------ALL_USERS.HTML SECTION------------------------------------------ */
+/* ----------------hall of fame--------------------- */
+
+/* .hof_mobile {
+	border: dotted blue;
+} */
+
 #hof_header {
 	color: goldenrod;
 	font-family: 'Berkshire Swash', cursive;
@@ -170,14 +193,278 @@ hr.style17:after {
 	margin-top: 0px;
 }
 
+.hof_image {
+	border: solid gold;
+}
 
-
+/* for mobile header */
 .hof_info h4 {
 	margin-top: 0px;
-	font-family: 'Cinzel', sans-serif;
-	font-weight: bold;
+	font-family: 'Marcellus SC', serif;
+	/* font-weight: bold; */
+	color: goldenrod;
+}
+
+/* for desktop header */
+.hof_info h3 {
+	word-wrap: break-word;
+	font-family: 'Marcellus SC', serif;
+	/* font-weight: bolder; */	
+	color : black;	
+}
+
+.hof_username:link {
+	text-decoration: none;
+}
+
+.hof_username {
+	color: darkcyan;
 }
 
 .hof_info p {
+	font-family: 'Kreon', serif;
+}
+
+/* ------------user entries--------------------- */
+
+#all_user_header {
+	font-family: 'Spectral SC', sans-serif;
+	color: gray;
+}
+
+.users_mobile {
+	/* border: dotted blue; */
+	margin-bottom: 5px;
+	/* text-overflow: ellipsis;
+	overflow: hidden; */
+	/* background: -webkit-linear-gradient(white, greenyellow);
+	margin-left : 5px; */
+}
+
+.users_desktop {
+	margin-bottom: 15px;
+}
+
+
+.user_name {
 	font-family: 'Concert One', sans-serif;
+}
+
+.user_name {
+	word-wrap: break-word;
+}
+
+/* CSS for badges */
+
+.badges_bronze i {
+	font-size: xx-large;
+	padding-top: 10px;
+	display:block;
+	background: -webkit-linear-gradient(#eee,darkgoldenrod);
+  	-webkit-background-clip: text;
+  	-webkit-text-fill-color: transparent;
+  	/* text-align:center; */
+}
+.badges_bronze p {
+	font-family: 'Concert One', sans-serif;
+	/* text-align: center;	 */
+	background: -webkit-linear-gradient(#eee,darkgoldenrod);
+  	-webkit-background-clip: text;
+  	-webkit-text-fill-color: transparent;
+}
+
+.badges_gold i {
+	font-size: xx-large;
+	padding-top: 10px;
+	display:block;
+	background: -webkit-linear-gradient(#eee, gold);
+  	-webkit-background-clip: text;
+  	-webkit-text-fill-color: transparent;
+  	/* text-align:center; */
+}
+.badges_gold p {
+	font-family: 'Concert One', sans-serif;
+	/* text-align: center;	 */
+	background: -webkit-linear-gradient(#eee, gold);
+  	-webkit-background-clip: text;
+  	-webkit-text-fill-color: transparent;
+}
+
+.badges_silver i {
+	font-size: xx-large;
+	padding-top: 10px;
+	display:block;
+	background: -webkit-linear-gradient(#eee,silver);
+  	-webkit-background-clip: text;
+  	-webkit-text-fill-color: transparent;
+  	/* text-align:center; */
+}
+.badges_silver p {
+	font-family: 'Concert One', sans-serif;
+	/* text-align: center;	 */
+	background: -webkit-linear-gradient(#eee, silver);
+  	-webkit-background-clip: text;
+  	-webkit-text-fill-color: transparent;
+}
+
+.user_entry_img {
+	border : solid mediumseagreen;
+}
+
+
+/* ===================BASE.HTML BACKGROUND COLOR CHANGE================== */
+
+body {
+	background-color: white
+}
+
+/* =========================BASE.HTML SIDEBAR============================ */
+
+#welcome_user {
+	text-align: center;
+	font-family: 'Marcellus SC', sans-serif;
+	font-size: large;
+	color: goldenrod;
+
+}
+
+/* ---------user_recipe_tag.html--------- */
+.user_recipe_sidebar_recipe:link {
+	text-decoration: none;
+}
+
+.user_recipe_sidebar_recipe {
+	font-family: 'Ubuntu', sans-serif;	
+	font-size: 110%;
+	color: darkgray;
+}
+
+.user_recipe_sidebar_name {
+	font-family: 'Spectral SC', sans-serif;
+	color: darkgreen;
+
+}
+
+.user_recipe_sidebar_name:link {
+	text-decoration: none;
+}
+
+/* ---------social_media_tag.html--------- */
+.social_media_text {
+	font-family: 'Spectral SC', sans-serif;
+	font-weight: bold;
+}
+
+
+/* =========================BASE.HTML SECOND NAVBAR======================== */
+
+.mynav {
+	font-family: 'Spectral SC' , serif;
+	font-size: medium;
+}
+
+/* =========================RECIPE_SINGLE.HTML======================== */
+
+.recipe_ingredient {
+	margin-top:0;
+	/* border: dotted black; */
+}
+
+.recipe_ingredient h4 {
+	font-family: 'Spectral SC', sans-serif;	
+	color: darkred;
+	margin-bottom: 5px;
+	margin-top: 0px;
+}
+
+.recipe_ingredient ul {
+	padding-left: 15px;
+	font-size: 95%;
+}
+
+#ingredient_header {
+	
+	color: goldenrod;
+	
+}
+
+
+#recipe_header {
+	font-family: 'Spectral SC', sans-serif;
+	color : goldenrod;
+	padding-top: 0px;
+	/* border: dotted black; */
+}
+
+.recipe_instruction {
+	margin-top: 0;
+	/* border: dotted black; */
+	border-left: solid goldenrod;
+	border-width: 1px;
+  
+}
+
+.recipe_instruction h4 {
+	font-family: 'Spectral SC', sans-serif;	
+	color: darkred;
+	padding-left: 5px;
+	margin-bottom: 5px;
+	margin-top: 0px;
+}
+
+.recipe_instruction ol {
+	padding-left: 25px;
+}
+
+#hr_recipe_single {
+	margin-top: 0;
+	margin-bottom : 5px;
+}
+
+.serving-time {
+	/* border: dotted blue; */
+	margin-bottom: 5px;
+	margin-top: 5px;
+	font-family: 'Kreon', sans-serif;
+	color: darkolivegreen;		
+}
+
+.recipe-image {
+	border: solid goldenrod;
+	border-width: 2px;
+}
+
+#article-single-header {
+	font-family: 'Kreon', sans-serif;  
+	color: goldenrod;
+
+}
+
+.article-single-text p {
+	text-align: justify;
+	text-justify: auto;
+}
+
+.article-single-created-date {
+	font-family: 'Kreon', sans-serif;
+	margin-top: 5px;
+}
+
+/* =========================USER_RECIPE_SINGLE.HTML======================== */
+		
+.user-info p {
+	font-family: 'Kreon', sans-serif;	
+	color: olive;
+}
+
+/* =========================GENERAL SECTION======================== */
+
+.kreon {
+	font-family: 'Kreon', sans-serif;  
+	color: goldenrod;
+}
+
+.spectral-gold {
+	font-family: 'Spectral SC' , sans-serif;  
+	color: goldenrod;
 }
