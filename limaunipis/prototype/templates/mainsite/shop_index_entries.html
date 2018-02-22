@@ -1,0 +1,33 @@
+{% load el_pagination_tags %}
+{% paginate products %}
+
+{% for product in products %}
+    {% if product.in_stock %}
+        <div class="col-md-3 col-sm-6 col-xs-6">
+            <div class="thumbnail">
+                <a href="{% url 'limau:product_single' slug=product.slug pk=product.pk %}">
+                    <img src="{{ product.image_1.url }}" alt="{{ product.name }}">
+                    {% if product.discount_switch %}
+                    <div class="caption">
+                        <p>{{ product.name | truncatechars:20 }}</p>
+                        <p>RM<strike>{{ product.original_price }}</strike> <b>{{product.discounted_price}}</b></p>
+                    </div>
+                    {% else %}
+                    <div class="caption">
+                        <p>{{ product.name |truncatechars:20 }}</p>
+                        <p>RM{{ product.original_price }}</p>
+                    </div>
+                    {% endif %}
+                    
+                    {% if product.discount_switch %}
+                    <div class="caption product-content">
+                        <h4><b>{{ product.discount | stringformat:'d' }} OFF%!</b></h4>
+                    </div>
+                    {% endif%}
+                </a>
+            </div>
+        </div>
+    {% endif %}
+{% endfor %}
+
+{% show_more %}

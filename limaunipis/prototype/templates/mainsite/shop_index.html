@@ -12,4 +12,30 @@
     </div>
 </div>
 
+<div class="row contentgroup">
+    <div class="col-md-3 col-sm-6 col-xs-6">
+        <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Product Category
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+                    <li><a href="{% url 'limau:shop_index' %}"><b>ALL ITEMS</b></a></li>
+                {% for cat in category %}
+                    <li><a href="{% url 'limau:shop_category' slug=cat.slug %}">{{ cat.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>  
+    </div>
+</div>
+
+<div class="row">
+{% include page_template %}
+</div>
+
+{% block js %}
+    {{ block.super }}
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="/static/el-pagination/js/el-pagination.js"></script>
+    <script>$.endlessPaginate({paginateOnScroll: true});</script>
+{% endblock %}
+
 {% endblock %}

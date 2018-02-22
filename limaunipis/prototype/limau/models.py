@@ -213,7 +213,21 @@ class Announcement(models.Model):
 
 # ---------------------Product Section---------------------------
 # models for Product
+
+class ProductCategory(models.Model):
+    name = models.CharField(max_length=300)
+    description = models.TextField(default="fill in product description here")
+    slug = models.SlugField(default="will-be-generated-once-save")
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super(ProductCategory, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.name
+
 class Product(models.Model):
+    category = models.ForeignKey(ProductCategory, null=True)
     name = models.CharField(max_length=100, default="fill in your product name here")
     image_1 = ProcessedImageField(upload_to="products", processors=[ResizeToFill(360, 360)], format="PNG", options={'quality':80}, null=True, blank=True )
     image_2 = ProcessedImageField(upload_to="products", processors=[ResizeToFill(360, 360)], format="PNG", options={'quality':80}, null=True, blank=True )
@@ -231,6 +245,7 @@ class Product(models.Model):
     discount_member = models.DecimalField(max_digits=10, decimal_places=2, default="7.50")
     discounted_member_price = models.DecimalField(max_digits=10, decimal_places=2, default="50.00")
     slug = models.SlugField(default="will-be-generated-once-save")
+    created_date = models.DateTimeField(default=timezone.now)
 
     def calculate_general_price(self):
         value = ((100-self.discount)/100)*self.original_price

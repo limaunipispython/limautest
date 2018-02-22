@@ -468,3 +468,21 @@ body {
 	font-family: 'Spectral SC' , sans-serif;  
 	color: goldenrod;
 }
+
+/* =========================PRODUCT.HTML======================== */
+.product-content {
+    background: none repeat scroll 0 0 #FFFFFF;
+    opacity: 0.8;
+    top:0;
+    left:0;
+	position: absolute;
+}
+
+.product-content h4 {
+	color: red;
+}
+
+.thumbnail{
+    position:relative;
+    
+}

@@ -50,10 +50,12 @@ urlpatterns = [
     url(r'^all_chefs/$', views.all_users, name="all_users"),
     #SHOP SECTION
     url(r'^shop_index/$', views.shop_index, name="shop_index"),
+    url(r'^category/(?P<slug>[\w\-]+)/$', views.shop_category, name="shop_category"),
+    url(r'^product/(?P<pk>\d+)/(?P<slug>[\w\-]+)/$', views.product_single, name="product_single"),
 ]
 
-media_url = url(r'media/(?P<path>.*)', static.serve, {'document_root' : settings.MEDIA_ROOT}, name="media_folder")
 
+media_url = url(r'media/(?P<path>.*)', static.serve, {'document_root' : settings.MEDIA_ROOT}, name="media_folder")
 #testing Http404 url for Debug=True 
 url_404 = url(r'^404/$', django.views.defaults.page_not_found, )
 

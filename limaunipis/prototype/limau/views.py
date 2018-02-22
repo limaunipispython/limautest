@@ -4,7 +4,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.template import loader
 from limau.models import Recipe, Article, Restaurant, UserRecipe
-from limau.models import RecipeCategory, ArticleCategory, RestaurantCategory, MobileBanner, ProductBanner
+from limau.models import RecipeCategory, ArticleCategory, RestaurantCategory, MobileBanner, ProductBanner, Product
+from limau.models import ProductCategory
 from limau.forms import UserForm, UserProfileForm, UserRecipeForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -455,17 +456,64 @@ def all_users(request):
 
 def shop_index(request):
     template = loader.get_template('mainsite/shop_index.html')
+    page_template = loader.get_template('mainsite/shop_index_entries.html')
     try:
         product_banner = ProductBanner.objects.all()[:3]
+        products = Product.objects.all().order_by('-created_date')
+        category = ProductCategory.objects.all()
     except ProductBanner.DoesNotExist:
         raise Http404("Error 404")
 
     context = {
         'product_banner' : product_banner,
+        'products' : products,
+        'page_template' : page_template,
+        'category' : category,
+    }
+    if request.is_ajax():
+        template = page_template
+    return HttpResponse(template.render(context, request))
+
+def shop_category(request, slug):
+    template = loader.get_template('mainsite/shop_index.html')
+    page_template = loader.get_template('mainsite/shop_index_entries.html')
+    try:
+        product_banner = ProductBanner.objects.all()[:3]
+        cat = ProductCategory.objects.get(slug=slug)
+        products = Product.objects.filter(category=cat).order_by('-created_date')
+        category = ProductCategory.objects.all()
+    except ProductCategory.DoesNotExist:
+        raise Http404("Error 404")
+
+    context = {
+        'product_banner' : product_banner,
+        'products' : products,
+        'page_template' : page_template,
+        'category' : category,
+    }
+    if request.is_ajax():
+        template = page_template
+    return HttpResponse(template.render(context, request))
+
+def product_single(request, slug, pk):
+    template = loader.get_template('mainsite/product_single.html')
+    try:
+        product = Product.objects.get(pk=pk)
+        # cat = product.category
+        related_products = Product.objects.all().order_by('?')[:4]
+        category = ProductCategory.objects.all()
+    except Product.DoesNotExist:
+        raise Http404("Error 404")
+    
+    context = {
+        'product' : product,
+        'related_products' : related_products,
+        'category' : category,
     }
     return HttpResponse(template.render(context, request))
 
-# MISCELLANEOUS
+
+# --------------------------------MISCELLANEOUS----------------------------------
 
 @login_required
 def user_logout(request):
