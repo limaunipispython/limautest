@@ -45,8 +45,8 @@ INSTALLED_APPS = [
     'registration',
     'bootstrap_toolkit',
     'bootstrap3',
-
-
+    'django.contrib.sites',
+    'django_comments',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -159,5 +159,5 @@ EMAIL_HOST_USER = 'arekay17@gmail.com'
 EMAIL_HOST_PASSWORD = 'wwg@5812'
 EMAIL_PORT = 587
 
-
-
+# comment setting
+SITE_ID = 1

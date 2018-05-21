@@ -33,3 +33,17 @@ NOTES
 1. Need to give a tag to users. example(bronze chef, silver chef, gold chef)
 2. Need to find a way to tag number of recipes posted for every users in their profile - done
 3. Need to highlight active tab for mobile users
+
+
+---------------
+
+To do: Comments model
+We need to understand how django excontrib comments works first before moving to the threaded comments, during deployment
+we might want to use disqus 
+
+1) disable threaded comments first, comment out site_id and threaded comments in the app
+2) follow the tutorial to create comments
+3) once the function is all ok try to modify the template
+4) once template looks ok then retry the threaded comments solution/package
+
+

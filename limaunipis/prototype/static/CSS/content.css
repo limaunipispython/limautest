@@ -486,3 +486,8 @@ body {
     position:relative;
     
 }
+
+#id_honeypot {
+	display: none;
+
+}

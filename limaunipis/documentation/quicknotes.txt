@@ -1,11 +1,29 @@
-OBJECTIVE: 5. HTML and CSS beautification for all function with bootstrap and responsive mobile testing 
+Major Task : Complete comment using django contrib comments
 
-MAJOR Task List
-    - create models to input image into the bxslider
-    - complete shop_index.html   
-MINOR Task List
+Recap on what have i done now
 
+1. in settings.py 
+    - include site_id=1 
+    - include django.contrib.sites and django_comments into installed_app list
 
-Brainstorm:
+2. in urls.py 
+    - include in urlpatterns list :  url(r'^comments/', include('django_comments.urls')), 
 
-Notes
+3. in article_single.html
+    - {% load comments %} - template tag?
+    - get_comment_count
+    - to render all comments for particular instance(article) there are two methods 
+        1. fast : render_comment_list -> html can be customized in some files in package directory
+        2. slower but with option to customize html in particular template: 
+            - get_comment_list for article as comments ->creating dictionary of comments 
+    - to render the form
+        1. fast : render_comment_form  
+        2. slower but with option to customize html in particular template:
+            - get_comment_form as comment form ->can use bootstrap
+            
+What to do next
+1. build up comment form for authenticated users only - done
+
+2. set up server
+
+3. include recipe author in the user recipe list

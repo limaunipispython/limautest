@@ -18,12 +18,13 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 
-
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
 	url(r'', include('limau.urls')),
     # url for default registration flow utilizing django registration redux
     url(r'^accounts/', include('registration.backends.default.urls')), 
+    # url for threadedcomments and django.contrib.comments
+    url(r'^comments/', include('django_comments.urls')),
 ]
 
 
