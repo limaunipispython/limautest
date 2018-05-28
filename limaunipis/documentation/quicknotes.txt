@@ -21,9 +21,12 @@ Recap on what have i done now
         2. slower but with option to customize html in particular template:
             - get_comment_form as comment form ->can use bootstrap
             
+
 What to do next
 1. build up comment form for authenticated users only - done
 
 2. set up server
 
 3. include recipe author in the user recipe list
+
+4. try to integrate haystack with whoosh

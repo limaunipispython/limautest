@@ -38,9 +38,10 @@ INSTALLED_APPS = [
     # 'django.contrib.sites',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'haystack',
     'django.contrib.staticfiles',
     'limau',
-    'imagekit',
+    'imagekit', 
     'el_pagination',
     'registration',
     'bootstrap_toolkit',
@@ -161,3 +162,12 @@ EMAIL_PORT = 587
 
 # comment setting
 SITE_ID = 1
+
+## haystack whoosh setting
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': os.path.join(BASE_DIR, 'whoosh_index'),
+    },
+}
